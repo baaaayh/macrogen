@@ -18,7 +18,7 @@ $(function () {
                 loop: true,
                 spaceBetween: 0,
             });
-            mainKV.on('slideBeforeChange', function () {
+            mainKV.on('slideChange', function () {
                 $('.label-container').removeClass('ani');
             });
         },
@@ -106,6 +106,8 @@ $(function () {
                 if ($('.label-container').hasClass('ani')) {
                     item.style.transform = `translate3d(${boxX}px, ${boxY}px, 0px)`;
                     item.style.transition = 'transform 0.1s ease'; // Optional: to add smooth transition
+                } else {
+                    item.style.transform = `translate3d(${boxX}px, ${boxY}px, 0px) scale(0)`;
                 }
             });
         },

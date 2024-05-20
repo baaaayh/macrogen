@@ -118,7 +118,6 @@ html::-webkit-scrollbar {
             transform: translateY(0);
         }
         .label {
-            transform: scale(0);
             animation: labelAnimation 1.13s;
             transition: 0.52s ease;
         }
