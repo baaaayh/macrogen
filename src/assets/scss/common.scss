@@ -1,0 +1,185 @@
+@charset "UTF-8";
+@import 'common/base';
+@import 'common/font';
+@import 'common/variables';
+@import 'common/mixin';
+@import 'common/media';
+.btn {
+    display: inline-block;
+}
+
+.btn-allmenu {
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    &__inner {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 6px;
+        width: 60px;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0.1);
+        font-size: 0;
+
+        &::before, &::after {
+            content:'';
+            display: inline-block;
+            width: 24px;
+            height: 2px;
+            background-color: #fff;
+        }
+    }
+}
+
+.btn-lang {
+    display: inline-block;
+    width: 100%;
+    padding: 20px 0;
+    &__inner {
+        position: relative;
+        display: inline-block;
+        padding-right: 16px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1;
+        font-weight: 700;
+        color: #fff;
+
+        &::before {
+            content:'';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            display: inline-block;
+            width: 9px;
+            height: 7px;
+            background: url(../images/common/icon_lang_arrow.svg) center / auto no-repeat;
+            transform: translateY(-50%);
+        }
+    }
+}
+
+.btn-default {
+    padding: 0 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 27px;
+    &__text {
+        position: relative;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 52px;
+        color: #fff;
+    }
+    &--app {
+        border: 1px solid #fff;
+        background-color: #fff;
+        .btn-default__text {
+            padding-left: 21px;
+            color: #000;
+            &::before {
+                content:'';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                display: inline-block;
+                width: 16px;
+                height: 18px;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    &--google {
+        .btn-default__text {
+            &::before {
+                background: url(../images/common/icon_google.svg) center / auto no-repeat;
+            }
+        }
+    }
+    &--apple {
+        .btn-default__text {
+            &::before {
+                background: url(../images/common/icon_apple.svg) center / auto no-repeat;
+            }
+        }
+    }
+}
+
+.wrap {
+    font-family: "SUIT", "Malgun Gothic", '맑은 고딕', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.125;
+    color: #000;
+}
+
+.inner {
+    position: relative;
+    max-width: 1620px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    &__inner {
+        padding-right: 100px;
+    }
+    
+    &__logo {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .gnb {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__box {
+            > ul {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                > li {
+                    a {
+                        display: block;
+                        padding: 0 25px;
+                        font-family: "NeuzeitGro";
+                        font-weight: 700;
+                        line-height: 90px;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        
+    }
+    .snb {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-block;
+        width: 100px;
+        height: 100vh;
+        padding: 15px 20px;
+        text-align: center;
+        > ul {
+            > li {
+                &:first-child {
+                    margin-top: 0;
+                }
+                margin-top: 45px;
+                font-size: 0;
+            }
+        }
+    }
+    
+}
