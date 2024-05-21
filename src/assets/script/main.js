@@ -9,20 +9,111 @@ $(function () {
             let mainKV = new Swiper('.main-kv', {
                 slidesPerView: 'auto',
                 parallax: true,
-                // autoplay: {
-                //     delay: 7000,
-                //     disableOnInteraction: false,
-                // },
+                autoplay: {
+                    delay: 7000,
+                    disableOnInteraction: false,
+                },
                 // allowTouchMove: false,
                 speed: 1000,
                 loop: true,
                 spaceBetween: 0,
+                on: {
+                    slideChangeTransitionEnd() {
+                        $('.swiper-slide').find('.label-container').removeClass('ani');
+                    },
+                },
             });
-            mainKV.on('slideChange', function () {
-                $('.label-container').removeClass('ani');
+        },
+        toggleBox() {
+            $('.toggle-box__item').hover(function () {
+                $(this).toggleClass('active');
+            });
+        },
+        newsImage() {
+            $('.news__item').hover(function () {
+                $(this).toggleClass('active');
+                $(this).find('.news__image').fadeToggle();
+            });
+        },
+        marquee() {
+            const rows = document.querySelectorAll('.rolling__inner');
+            const speed = 1; // 이동 속도 (픽셀)
+            const interval = 20; // 이동 간격 (밀리초)
+
+            function cloneItems(row) {
+                const rowWidth = row.offsetWidth;
+                let totalWidth = 0;
+                const items = Array.from(row.children);
+                items.forEach((item) => {
+                    const clone = item.cloneNode(true);
+                    row.appendChild(clone);
+                    totalWidth += clone.offsetWidth + 20; // 아이템 너비 + 마진
+                });
+                if (totalWidth < rowWidth * 2) {
+                    cloneItems(row);
+                }
+            }
+
+            function moveItems(row) {
+                const direction = row.getAttribute('data-direction');
+                const firstItemWidth = row.firstElementChild.offsetWidth;
+                const currentTransform = getComputedStyle(row).transform;
+                const matrixValues = currentTransform.match(/matrix.*\((.+)\)/);
+                let currentTranslateX = 0;
+
+                if (matrixValues) {
+                    currentTranslateX = parseFloat(matrixValues[1].split(', ')[4]);
+                }
+
+                if (direction === 'left') {
+                    if (Math.abs(currentTranslateX) >= firstItemWidth + 20) {
+                        // 아이템 너비 + 마진
+                        row.style.transition = 'none'; // 트랜지션 일시 중지
+                        row.style.transform = 'translateX(0)';
+                        row.appendChild(row.firstElementChild); // 첫 번째 아이템을 맨 끝으로 이동
+                        setTimeout(() => {
+                            row.style.transition = ''; // 트랜지션 재개
+                        }, interval);
+                    } else {
+                        row.style.transform = `translateX(${currentTranslateX - speed}px)`;
+                    }
+                } else if (direction === 'right') {
+                    if (currentTranslateX >= 0) {
+                        row.style.transition = 'none'; // 트랜지션 일시 중지
+                        row.style.transform = `translateX(-${firstItemWidth + 20}px)`;
+                        row.insertBefore(row.lastElementChild, row.firstElementChild); // 마지막 아이템을 맨 앞으로 이동
+                        setTimeout(() => {
+                            row.style.transition = ''; // 트랜지션 재개
+                        }, interval);
+                    } else {
+                        row.style.transform = `translateX(${currentTranslateX + speed}px)`;
+                    }
+                }
+            }
+
+            function initRow(row) {
+                cloneItems(row);
+                setInterval(() => moveItems(row), interval);
+            }
+
+            function handleResize() {
+                rows.forEach((row) => {
+                    row.innerHTML = ''; // 기존 아이템 클리어
+                    cloneItems(row);
+                });
+            }
+
+            window.addEventListener('resize', handleResize);
+
+            // 페이지 로드 시 초기화
+            window.addEventListener('load', () => {
+                rows.forEach(initRow);
             });
         },
         init() {
+            this.newsImage();
+            this.toggleBox();
+            this.marquee();
             this.mainKvInit();
         },
     };
@@ -39,58 +130,15 @@ $(function () {
             $('.scroll__bar').css('top', (barPos / scrollHeight) * 100 + '%');
         },
         smoothScroll() {
-            class Scrooth {
-                constructor({ element = window, strength = 10, acceleration = 1.2, deceleration = 0.975 } = {}) {
-                    this.element = element;
-                    this.distance = strength;
-                    this.acceleration = acceleration;
-                    this.deceleration = deceleration;
-                    this.running = false;
-
-                    this.element.addEventListener('wheel', this.scrollHandler.bind(this), { passive: false });
-                    this.element.addEventListener('mousewheel', this.scrollHandler.bind(this), { passive: false });
-                    this.scroll = this.scroll.bind(this);
-                }
-
-                scrollHandler(e) {
-                    e.preventDefault();
-
-                    if (!this.running) {
-                        this.top = this.element.pageYOffset || this.element.scrollTop || 0;
-                        this.running = true;
-                        this.currentDistance = e.deltaY > 0 ? 0.1 : -0.1;
-                        this.isDistanceAsc = true;
-                        this.scroll();
-                    } else {
-                        this.isDistanceAsc = false;
-                        this.currentDistance = e.deltaY > 0 ? this.distance : -this.distance;
-                    }
-                }
-
-                scroll() {
-                    if (this.running) {
-                        this.currentDistance *= this.isDistanceAsc === true ? this.acceleration : this.deceleration;
-                        Math.abs(this.currentDistance) < 0.1 && this.isDistanceAsc === false ? (this.running = false) : 1;
-                        Math.abs(this.currentDistance) >= Math.abs(this.distance) ? (this.isDistanceAsc = false) : 1;
-
-                        this.top += this.currentDistance;
-                        this.element.scrollTo(0, this.top);
-
-                        requestAnimationFrame(this.scroll);
-                    }
-                }
+            const lenis = new Lenis();
+            lenis.on('scroll', function () {});
+            function raf(time) {
+                lenis.raf(time * 0.9);
+                requestAnimationFrame(raf);
             }
-
-            const scroll = new Scrooth({
-                element: window,
-                strength: 30,
-                acceleration: 1.25,
-                deceleration: 0.875,
-            });
+            requestAnimationFrame(raf);
         },
-
         pointerPos(e) {
-            const boxes = document.querySelectorAll('.label');
             const currentX = e.clientX;
             const currentY = e.clientY;
 
@@ -99,25 +147,16 @@ $(function () {
             const deltaY = currentY - lastMouseY;
 
             // Calculate the new position for the box
-            const boxX = deltaX / 70;
-            const boxY = deltaY / 70;
+            const boxX = -(deltaX / 70);
+            const boxY = -(deltaY / 70);
 
-            boxes.forEach((item) => {
-                if ($('.label-container').hasClass('ani')) {
-                    item.style.transform = `translate3d(${boxX}px, ${boxY}px, 0px)`;
-                    item.style.transition = 'transform 0.1s ease'; // Optional: to add smooth transition
-                } else {
-                    item.style.transform = `translate3d(${boxX}px, ${boxY}px, 0px) scale(0)`;
-                }
-            });
+            if ($('.label-container').hasClass('ani')) {
+                $('.label-container.ani').css({ transform: `translate3d(${boxX}px, ${boxY}px, 0px)` });
+            }
         },
         addTransitionEndListener() {
-            const boxes = document.querySelectorAll('.label');
-
-            boxes.forEach((item) => {
-                item.addEventListener('animationend', (event) => {
-                    $('.label-container').addClass('ani');
-                });
+            $('.swiper-slide-active .main-kv__text').on('transitionend', () => {
+                $('.swiper-slide-active .label-container').addClass('ani');
             });
         },
         init() {

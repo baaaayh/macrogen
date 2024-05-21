@@ -29,6 +29,7 @@
             width: 24px;
             height: 2px;
             background-color: #fff;
+            transition: 0.24s ease;
         }
     }
 }
@@ -57,6 +58,7 @@
             height: 7px;
             background: url(../images/common/icon_lang_arrow.svg) center / auto no-repeat;
             transform: translateY(-50%);
+            transition: 0.24s ease;
         }
     }
 }
@@ -156,6 +158,7 @@
                         font-weight: 700;
                         line-height: 90px;
                         color: #fff;
+                        transition: 0.23s ease;
                     }
                 }
             }
@@ -181,5 +184,30 @@
             }
         }
     }
-    
+    &.black {
+        .gnb__box {
+            > ul {
+                > li {
+                    a {
+                        color: #000;
+                    }
+                }
+            }
+        }
+        .btn-allmenu {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.1);
+            &__inner {
+                &::before, &::after {
+                    background-color: #000;
+                }
+            }
+        }
+        .btn-lang__inner {
+            color: #000;
+            &::before {
+                background: url(../images/common/icon_lang_arrow_black.svg) center / auto no-repeat;
+            }
+        }
+    }
 }

@@ -22,7 +22,19 @@ html::-webkit-scrollbar {
         position: absolute;
         display: inline-block;
         width: 100%;
-        background-color: red;
+        background-color: #fff;
+        transition: background-color 1.34s ease;
+    }
+}
+
+.header {
+    &.black {
+        .scroll__bg {
+            background-color: rgba(0, 0, 0, 0.1)
+        }
+        .scroll__bar {
+            background-color: #000;
+        }
     }
 }
 
@@ -36,9 +48,83 @@ html::-webkit-scrollbar {
     &--02 {
         padding: 250px 0;
         h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;;
+            height: 100vh;
             font-size: 80px;
             font-weight: 700;
             line-height: 100px;
+            color: #000;
+            text-align: center;
+            position: relative;
+            >div {
+                position: relative;
+                span {
+                    position: absolute;
+                    display: inline-block;
+                    top: 0;
+                    right: 0;
+                    display: inline-block;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #fff;
+                }
+                &:last-child {
+                    span {
+                        &::after {
+                            transition-delay: 0.35s;
+                        }
+                    }        
+                }
+            }
+
+            &.active {
+                >div {
+                    span {
+                        &::after {
+                            width: 0;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+    &--03 {
+        overflow: hidden;
+        position: relative;
+        height: 100vh;
+    }
+    &--04 {
+        padding: 250px 0;
+        h2 {
+            font-size: 70px;
+            line-height: 1;
+            color: #000;
+            font-weight: 700;
+            margin-bottom: 150px;
+        }
+    }
+    &--05 {
+        padding: 250px 0;
+        background-color: #eee;
+        h2 {
+            font-size: 80px;
+            line-height: 100px;
+            color: #000;
+            font-weight: 700;
+            text-align: center;
+        }
+    }
+    &--06 {
+        padding: 250px 0;
+        h2 {
+            font-size: 80px;
+            line-height: 100px;
+            font-weight: 700;
+            text-align: center;
             color: #000;
         }
     }
@@ -118,58 +204,13 @@ html::-webkit-scrollbar {
             transform: translateY(0);
         }
         .label {
-            animation: labelAnimation 1.13s;
-            transition: 0.52s ease;
-        }
-        .label--01 {
-            animation-delay: 1.53s;
-        }
-        .label--02 {
-            animation-delay: 1.41s;
-        }
-        .label--03 {
-            animation-delay: 1.67s;
-        }
-        .label--04 {
-            animation-delay: 1.36s;
-        }
-        .label--05 {
-            animation-delay: 1.39s;
-        }
-        .label--06 {
-            animation-delay: 1.43s;
-        }
-        .label--07 {
-            animation-delay: 1.23s;
-        }
-        .label--08 {
-            animation-delay: 1.485s;
-        }
-        .label--09 {
+            animation: labelAnimation 1.34s forwards;
             animation-delay: 1.63s;
         }
-        .label--10 {
-            animation-delay: 1.42s;
-        }
     }
 
-    .label-container {
-        &.ani {
-            .label {
-                transform: scale(1);
-                animation: unset;
-                animation-delay: unset;
-                transition: unset;
-            }
-        }
-    }
-}
+} 
 
-@keyframes labelAnimation {
-    0% {transform: scale(0);}
-    40% {transform: scale(1.12);}
-    100% {transform: scale(1);}
-}
 
 .label-container {
     position: absolute;
@@ -179,6 +220,13 @@ html::-webkit-scrollbar {
     right: 0;
     width: 100%;
     height: 100%;
+    .label {
+        transform: scale(0);
+        animation: labelHide 0.23s forwards;
+    }
+    &.ani {
+        
+    }
 }
 .label {
     position: absolute;
@@ -191,8 +239,9 @@ html::-webkit-scrollbar {
     backdrop-filter: blur(15px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transform: scale(0);
     will-change: transform;
+    transform: scale(0);
+    // transition: 0.52s cubic-bezier(0.68, -0.3, 0.12, 1.6);
     &__icon {
         display: inline-flex;
         font-size: 0;
@@ -206,42 +255,338 @@ html::-webkit-scrollbar {
     &--01 {
         top: -25%;
         left: 20%;
+        animation-delay: 1.53s;
     }
     &--02 {
         top: -10%;
         right: 17%;
+        animation-delay: 1.41s;
     }
     &--03 {
         top: 43%;
         left: -5%;
+        animation-delay: 1.67s;
     }
     &--04 {
         top: 35%;
         left: 40%;
+        animation-delay: 1.36s;
     }
     &--05 {
         top: 85%;
         right: -3%;
+        animation-delay: 1.39s;
     }
     &--06 {
         top: -25%;
         left: 14%;
+        animation-delay: 1.43s;
     }
     &--07 {
         top: -10%;
         right: 14%;
+        animation-delay: 1.23s;
     }
     &--08 {
         top: 43%;
         left: -22%;
+        animation-delay: 1.485s;
     }
     &--09 {
         top: 32%;
         left: 40%;
+        animation-delay: 1.64s;
     }
     &--10 {
         top: 85%;
         right: -8%;
+        animation-delay: 1.42s;
     }
 }
 
+@keyframes labelAnimation {
+    0% {transform: scale(0);}
+    40% {transform: scale(1.12);}
+    100% {transform: scale(1);}
+}
+@keyframes labelHide {
+    from {transform: scale(1);}
+    to {transform: scale(0);}
+}
+
+.toggle-box {
+    &__inner {
+        overflow: hidden;
+        display: flex;
+        height: 970px;
+    }
+    &__item {
+        position: relative;
+        flex: 1;
+        height: 100%;
+        transition: 0.46s ease;
+        &--01 {
+            background: url(../images/main/toggle01.jpg) center / cover no-repeat;
+        }
+        &--02 {
+            background: url(../images/main/toggle02.jpg) center / cover no-repeat;
+        }
+        &--03 {
+            background: url(../images/main/toggle03.jpg) center / cover no-repeat;
+        }
+
+        &.active {
+            flex-basis: 600px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            h3 {
+                transform: translateY(-50px);
+            }
+            ul {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        h3 {
+            font-size: 60px; 
+            font-weight: 700;
+            color: #fff;
+            transition: 0.43s ease;
+        }
+        ul {
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.43s ease;
+            li {
+                &:first-child {
+                    margin-top: 0;
+                }
+                margin-top: 15px;
+                font-size: 20px;
+                line-height: 30px;
+                font-weight: 700;
+                color: #fff;
+            }
+        }
+    }
+    &__content {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    &__text {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.parallax {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    &__text {
+        &--01 {
+            position: absolute;
+            left: 50%;
+            // font-size: 80px;
+            // line-height: 100px;
+            font-size: 130px;
+            line-height: 160px;
+            white-space: nowrap;
+            font-weight: 700;
+            color: #000;
+            text-align: center;
+        }
+    }
+
+    &__block {
+        position: absolute;
+        overflow: hidden;
+        height: 50vh;
+        background-color: #fff;
+        &--top {
+            top: 0;
+            width: 100%;
+            .parallax__text--01 {
+                top: 100%;
+                transform: translate(-50%, -50%);
+            }
+        }
+        &--bottom {
+            bottom: 0;
+            width: 100%;
+            .parallax__text--01 {
+                bottom: 100%;
+                transform: translate(-50%, 50%);
+            }
+        }
+    }
+
+    &__row {
+        &--01 {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        &--02 {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        &--03 {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+    }
+
+    &__bg {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background: url(../images/main/parallax_bg.jpg) center / cover no-repeat;
+    }
+
+    &__content {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        text-align: center;
+        h2 {
+            font-size: 90px;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+        }
+        p {
+            margin-top: 40px;
+            font-size: 28px;
+            line-height: 38px;
+            color: #fff;
+        }
+        .btn-wrap {
+            margin-top: 80px;
+        }
+    }
+}
+
+.news {
+    &__container {
+        ul {
+            li {
+                &:first-child {
+                    margin-top: 0;
+                }
+                margin-top: 150px;
+            }
+        }
+    }
+
+    &__item {
+        position: relative;
+    }
+    &__title {
+        padding-bottom: 50px;
+        border-bottom: 1px solid #000;
+    }
+    &__wrap {
+        max-width: 940px;
+        width: 100%;
+    }
+    &__date {
+        font-size: 16px;
+        font-weight: 400;
+    }
+    &__head {
+        margin-top: 20px;
+        font-size: 50px;
+        line-height: 60px;
+        font-weight: 700;
+    }
+    &__content {
+        padding-top: 30px;
+    }
+    &__para {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 400;
+    }
+    &__image {
+        display: none;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+}
+
+
+.map {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.map-thumb {
+    margin-top: 80px;
+    >ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        > li {
+            // flex-shrink: 0;
+            width: calc(25% - (60px / 4));
+        }
+    }
+    &__inner {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 14px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+    }
+    &__text {
+        b {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        span {
+            margin-top: 5px;
+            display: block;
+            font-size: 14px;
+            line-height: 24px;
+            font-weight: 500;
+            color: #666;
+        }
+    }
+}
+
+.rolling {
+    margin-top: 150px;
+    &__row {
+        margin-top: 20px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 185px;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    &__inner {
+        display: flex;
+    gap: 20px;
+    position: absolute;
+    white-space: nowrap;
+    }
+    &__item {
+        flex: none;
+    }
+}
