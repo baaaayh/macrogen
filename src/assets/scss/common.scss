@@ -13,6 +13,7 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     &__inner {
+        position: relative;
         display: inline-flex;
         justify-content: center;
         align-items: center;
@@ -25,11 +26,42 @@
 
         &::before, &::after {
             content:'';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: inline-block;
             width: 24px;
             height: 2px;
             background-color: #fff;
+            transform-origin: center;
             transition: 0.24s ease;
+        }
+        &::before {
+            margin-top: -5px;
+        }
+        &::after {
+            margin-top: 5px;
+        }
+    }
+
+    &.active {
+        .btn-allmenu__inner {
+            &::before, &::after {
+                position: absolute;
+            }
+            &::before{
+                margin-top: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+            }
+            &::after {
+                margin-top: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
         }
     }
 }
@@ -126,7 +158,7 @@
 }
 
 .header {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -166,7 +198,7 @@
         
     }
     .snb {
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         display: inline-block;
@@ -185,15 +217,6 @@
         }
     }
     &.black {
-        .gnb__box {
-            > ul {
-                > li {
-                    a {
-                        color: #000;
-                    }
-                }
-            }
-        }
         .btn-allmenu {
             border: 1px solid rgba(0, 0, 0, 0.1);
             background-color: rgba(0, 0, 0, 0.1);
@@ -209,5 +232,44 @@
                 background: url(../images/common/icon_lang_arrow_black.svg) center / auto no-repeat;
             }
         }
+    }
+}
+.scroll {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    &__bg {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    &__bar {
+        position: absolute;
+        display: inline-block;
+        top: 50%;
+        width: 100%;
+        background-color: #fff;
+        transition: background-color 1.34s ease;
+    }
+}
+
+.header {
+    &.black {
+        .scroll__bg {
+            background-color: rgba(0, 0, 0, 0.1)
+        }
+        .scroll__bar {
+            background-color: #000;
+        }
+    }
+}
+
+.footer {
+    img {
+        object-fit: cover;
+        object-position: center;
     }
 }

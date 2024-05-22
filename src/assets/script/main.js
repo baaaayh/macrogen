@@ -96,12 +96,7 @@ $(function () {
                 setInterval(() => moveItems(row), interval);
             }
 
-            function handleResize() {
-                rows.forEach((row) => {
-                    row.innerHTML = ''; // 기존 아이템 클리어
-                    cloneItems(row);
-                });
-            }
+            function handleResize() {}
 
             window.addEventListener('resize', handleResize);
 
@@ -119,25 +114,6 @@ $(function () {
     };
 
     const mouse = {
-        scrollHeight() {
-            const docH = $(document).innerHeight();
-            const winH = $(window).innerHeight();
-            $('.scroll__bar').css('height', (winH / docH) * 100 + '%');
-        },
-        scrollPos(e) {
-            const scrollHeight = document.documentElement.scrollHeight;
-            const barPos = $(window).scrollTop();
-            $('.scroll__bar').css('top', (barPos / scrollHeight) * 100 + '%');
-        },
-        smoothScroll() {
-            const lenis = new Lenis();
-            lenis.on('scroll', function () {});
-            function raf(time) {
-                lenis.raf(time * 0.9);
-                requestAnimationFrame(raf);
-            }
-            requestAnimationFrame(raf);
-        },
         pointerPos(e) {
             const currentX = e.clientX;
             const currentY = e.clientY;
@@ -160,15 +136,53 @@ $(function () {
             });
         },
         init() {
-            this.scrollHeight();
-            this.smoothScroll();
-            this.scrollPos();
             this.addTransitionEndListener();
-            $(window).on('wheel scroll', (e) => this.scrollPos(e));
             $(window).on('mousemove', (e) => this.pointerPos(e));
+        },
+    };
+
+    let lastScrollTop = 0;
+    const scroll = {
+        handleScroll() {
+            const sections = document.querySelectorAll('.main-section');
+            const header = document.querySelector('.header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
+
+            sections.forEach((section) => {
+                const rect = section.getBoundingClientRect();
+                const color = section.getAttribute('data-header-color');
+
+                if (scrollDirection === 'down') {
+                    // 스크롤 다운: 화면 중앙 기준점 넘어감
+                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                        if (color) {
+                            header.classList.add(color);
+                        } else {
+                            header.className = 'header'; // 모든 색상 클래스를 제거
+                        }
+                    }
+                } else {
+                    // 스크롤 업: 화면 중앙 기준점 넘어감
+                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                        if (color) {
+                            header.classList.add(color);
+                        } else {
+                            header.className = 'header'; // 모든 색상 클래스를 제거
+                        }
+                    }
+                }
+            });
+
+            lastScrollTop = scrollTop;
+        },
+        init() {
+            $(window).on('scroll', this.handleScroll);
+            $(window).on('load', this.handleScroll);
         },
     };
 
     main.init();
     mouse.init();
+    scroll.init();
 });
