@@ -6,12 +6,12 @@
             <div class="container">
                 <%- include("./include/header.html") %>
                 <main class="main">
-                    <section class="main-section main-section--kv">
+                    <section class="main-section main-section--kv" data-header-color="black">
                         <div class="main-section__inner">
                             <div class="main-kv swiper">
                                 <div class="swiper-wrapper">
-                                    <div class="main-kv__slide swiper-slide">
-                                        <div class="main-kv__bg" data-swiper-parallax="35%">
+                                    <div class="main-kv__slide main-kv__slide--01 swiper-slide">
+                                        <div class="main-kv__bg" data-swiper-parallax="45%">
                                             <img src="../resources/assets/images/main/kv01.jpg" alt="" />
                                         </div>
                                         <div class="main-kv__content">
@@ -34,15 +34,15 @@
                                                         </div>
                                                         <div class="label label--03">
                                                             <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_03.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">Digital healthcare platform</span>
-                                                        </div>
-                                                        <div class="label label--04">
-                                                            <span class="label__icon">
                                                                 <img src="../resources/assets/images/main/icon_label_04.svg" alt="" />
                                                             </span>
                                                             <span class="label__text">몸BTI 건강관리 플랫폼</span>
+                                                        </div>
+                                                        <div class="label label--04">
+                                                            <span class="label__icon">
+                                                                <img src="../resources/assets/images/main/icon_label_03.svg" alt="" />
+                                                            </span>
+                                                            <span class="label__text">Digital healthcare platform</span>
                                                         </div>
                                                         <div class="label label--05">
                                                             <span class="label__icon">
@@ -63,8 +63,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="main-kv__slide swiper-slide">
-                                        <div class="main-kv__bg" data-swiper-parallax="35%">
+                                    <div class="main-kv__slide main-kv__slide--02 swiper-slide">
+                                        <div class="main-kv__bg" data-swiper-parallax="45%">
                                             <img src="../resources/assets/images/main/kv02.jpg" alt="" />
                                         </div>
                                         <div class="main-kv__content">
@@ -97,7 +97,7 @@
                                                             </span>
                                                             <span class="label__text">몸BTI 건강관리 플랫폼</span>
                                                         </div>
-                                                        <div class="label label--05">
+                                                        <div class="label label--10">
                                                             <span class="label__icon">
                                                                 <img src="../resources/assets/images/main/icon_label_10.svg" alt="" />
                                                             </span>
@@ -118,14 +118,17 @@
                                     </div>
                                 </div>
                             </div>
+                            <span class="scroll-down">
+                                <span class="scroll-down__icon">Scroll Down</span>
+                            </span>
                         </div>
                     </section>
                     <section class="main-section main-section--02" data-header-color="black">
                         <div class="main-section__inner">
                             <div class="inner">
                                 <h2>
-                                    <div>세계적 수준의 서비스를 제공하여<span></span></div>
-                                    <div>더 건강하고 행복한 삶을 만들어갑니다<span></span></div>
+                                    <div class="section02__row section02__row--01">세계적 수준의 서비스를 제공하여<span></span></div>
+                                    <div class="section02__row section02__row--02">더 건강하고 행복한 삶을 만들어갑니다<span></span></div>
                                 </h2>
                                 <div class="toggle-box">
                                     <div class="toggle-box__inner">
@@ -133,24 +136,42 @@
                                             <div class="toggle-box__content">
                                                 <div class="toggle-box__text">
                                                     <h3>
-                                                        Health<br />
-                                                        Care
+                                                        <div>
+                                                            <span>Health</span>
+                                                        </div>
+                                                        <div>
+                                                            <span>Care</span>
+                                                        </div>
                                                     </h3>
                                                     <ul>
                                                         <li>연구분석</li>
                                                         <li>싱글셀</li>
                                                     </ul>
                                                 </div>
+                                                <div class="btn-wrap">
+                                                    <a href="javascript:;" class="btn btn-default">
+                                                        <span class="btn-default__text">View More</span>
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="toggle-box__item toggle-box__item--02">
                                             <div class="toggle-box__content">
                                                 <div class="toggle-box__text">
-                                                    <h3>Sequencing</h3>
+                                                    <h3>
+                                                        <div>
+                                                            <span>Sequencing</span>
+                                                        </div>
+                                                    </h3>
                                                     <ul>
                                                         <li>연구분석</li>
                                                         <li>싱글셀</li>
                                                     </ul>
+                                                </div>
+                                                <div class="btn-wrap">
+                                                    <a href="javascript:;" class="btn btn-default">
+                                                        <span class="btn-default__text">View More</span>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,13 +179,22 @@
                                             <div class="toggle-box__content">
                                                 <div class="toggle-box__text">
                                                     <h3>
-                                                        Clinical<br />
-                                                        Research
+                                                        <div>
+                                                            <span>Clinical</span>
+                                                        </div>
+                                                        <div>
+                                                            <span>Research</span>
+                                                        </div>
                                                     </h3>
                                                     <ul>
                                                         <li>연구분석</li>
                                                         <li>싱글셀</li>
                                                     </ul>
+                                                </div>
+                                                <div class="btn-wrap">
+                                                    <a href="javascript:;" class="btn btn-default">
+                                                        <span class="btn-default__text">View More</span>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,6 +219,7 @@
                             <div class="parallax">
                                 <div class="parallax__block parallax__block--top">
                                     <div class="parallax__text--01">
+                                        <!-- <span></span> -->
                                         <div class="parallax__row parallax__row--01">인류의 건강</div>
                                         <div class="parallax__row parallax__row--02">증진을 위해 노력하는</div>
                                         <div class="parallax__row parallax__row--03">마크로젠</div>
@@ -196,6 +227,7 @@
                                 </div>
                                 <div class="parallax__block parallax__block--bottom">
                                     <div class="parallax__text--01">
+                                        <!-- <span></span> -->
                                         <div class="parallax__row parallax__row--01">인류의 건강</div>
                                         <div class="parallax__row parallax__row--02">증진을 위해 노력하는</div>
                                         <div class="parallax__row parallax__row--03">마크로젠</div>
@@ -447,26 +479,47 @@
                 const tl2 = gsap.timeline({
                     scrollTrigger: {
                         trigger: '.main-section--02 h2',
-                        start: 'top top',
+                        start: 'center center',
                         end: '+=600%',
-                        scrub: true,
+                        scrub: 1,
                         pin: '.main-section--02 h2',
                     },
                 });
 
-                tl2.to('.main-section--02 h2 div span', {
+                tl2.to('.section02__row--01 span', {
                     width: '0%',
-                    duration: 15,
-                }).to('.main-section--02', {
-                    duration: 5,
-                });
+                    duration: 10,
+                })
+                    .to(
+                        '.section02__row--02 span',
+                        {
+                            width: '0%',
+                            delay: 15,
+                            duration: 25,
+                        },
+                        '<'
+                    )
+                    .to('.section02__row--01', {
+                        opacity: 0,
+                        filter: 'blur(5px)',
+                        duration: 30,
+                    })
+                    .to(
+                        '.section02__row--02',
+                        {
+                            opacity: 0,
+                            filter: 'blur(5px)',
+                            duration: 30,
+                        },
+                        '<'
+                    );
 
                 const tl3 = gsap.timeline({
                     scrollTrigger: {
                         trigger: '.main-section--03',
                         start: 'center center',
                         end: '+=500%',
-                        scrub: true,
+                        scrub: 1,
                         pin: true,
                         onEnter: () => {
                             document.querySelector('.main-section--03').parentNode.classList.add('custom-pin-spacer');
@@ -480,9 +533,29 @@
                         start: 'center center',
                         endTrigger: '.main-section--04',
                         end: 'bottom bottom',
-                        scrub: true,
+                        scrub: 1,
                         pin: true,
                     },
+                });
+
+                const tl5 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.toggle-box',
+                        start: 'center bottom',
+                        toggleClass: 'active',
+                    },
+                });
+
+                const newsList = gsap.utils.toArray('.news__container ul li');
+
+                newsList.forEach((item, index) => {
+                    gsap.to(item, {
+                        scrollTrigger: {
+                            trigger: item,
+                            start: 'top bottom-=300px',
+                            onEnter: () => item.classList.add('active'),
+                        },
+                    });
                 });
 
                 tl3.to('.parallax__row--01', {
@@ -508,6 +581,15 @@
                         },
                         '<'
                     )
+                    .to(
+                        '.parallax__text--01 span',
+                        {
+                            opacity: 0,
+                            duration: 5,
+                            filter: 'blur(10px)',
+                        },
+                        '<'
+                    )
                     .to('.parallax__block--top', {
                         y: '-50vh',
                         duration: 5,
@@ -523,7 +605,7 @@
                     .to(
                         '.parallax__block--top .parallax__text--01',
                         {
-                            y: '100px',
+                            top: 'calc(100% + 100px)',
                             duration: 5,
                         },
                         '<'
@@ -531,7 +613,7 @@
                     .to(
                         '.parallax__block--bottom .parallax__text--01',
                         {
-                            y: '100px',
+                            bottom: 'calc(100% + 100px)',
                             duration: 5,
                         },
                         '<'
@@ -541,6 +623,7 @@
                         {
                             top: '50%',
                             transform: 'translate(-50%, -50%)',
+                            opacity: 1,
                             duration: 5,
                         },
                         '<'

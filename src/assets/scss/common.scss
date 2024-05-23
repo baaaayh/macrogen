@@ -4,6 +4,16 @@
 @import 'common/variables';
 @import 'common/mixin';
 @import 'common/media';
+
+html {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+
 .btn {
     display: inline-block;
 }
@@ -172,6 +182,11 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        a {
+            img {
+                width: 160px;
+            }
+        }
     }
     .gnb {
         display: flex;
@@ -189,7 +204,6 @@
                         font-family: "NeuzeitGro";
                         font-weight: 700;
                         line-height: 90px;
-                        color: #fff;
                         transition: 0.23s ease;
                     }
                 }
@@ -218,11 +232,11 @@
     }
     &.black {
         .btn-allmenu {
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background-color: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 1);
+            background-color: rgba(0, 0, 0, 1);
             &__inner {
                 &::before, &::after {
-                    background-color: #000;
+                    background-color: #fff;
                 }
             }
         }
@@ -249,10 +263,10 @@
     &__bar {
         position: absolute;
         display: inline-block;
-        top: 50%;
+        top: 0;
         width: 100%;
         background-color: #fff;
-        transition: background-color 1.34s ease;
+        will-change: position;
     }
 }
 
