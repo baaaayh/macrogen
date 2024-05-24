@@ -100,7 +100,6 @@ html::-webkit-scrollbar {
             height: 7px;
             background: url(../images/common/icon_lang_arrow.svg) center / auto no-repeat;
             transform: translateY(-50%);
-            transition: 0.24s ease;
         }
     }
 }
@@ -110,6 +109,7 @@ html::-webkit-scrollbar {
     border: 1px solid rgba(255, 255, 255, 0.3);
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 27px;
+    transition: 0.34s ease;
     &__text {
         position: relative;
         display: inline-block;
@@ -117,6 +117,28 @@ html::-webkit-scrollbar {
         font-weight: 700;
         line-height: 52px;
         color: #fff;
+        transition: 0.34s ease;
+    }
+
+    &:hover {
+        background-color: #fff;
+        .btn-default__text {
+            color: #000;
+        }
+    }
+
+    &--white {
+        background-color: #fff;
+        .btn-default__text {
+            color: #000;
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            .btn-default__text {
+                color: #fff;
+            }
+        }
     }
     &--app {
         border: 1px solid #fff;
@@ -205,6 +227,7 @@ html::-webkit-scrollbar {
                         font-weight: 700;
                         line-height: 90px;
                         transition: 0.23s ease;
+                        color: #fff;
                     }
                 }
             }
@@ -231,6 +254,15 @@ html::-webkit-scrollbar {
         }
     }
     &.black {
+        .gnb__box {
+            > ul {
+                > li {
+                    a {
+                        color: #000;
+                    }
+                }
+            }
+        }
         .btn-allmenu {
             border: 1px solid rgba(0, 0, 0, 1);
             background-color: rgba(0, 0, 0, 1);
@@ -286,4 +318,38 @@ html::-webkit-scrollbar {
         object-fit: cover;
         object-position: center;
     }
+}
+.cursor-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 30, 98, 0.50);
+    backdrop-filter: blur(5px);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    pointer-events: none; /* Make it unclickable */
+    transform: scale(0);
+    margin-left: -50px;
+    margin-top: -50px;
+    transition: opacity 0.3s ease, transform 0.23s ease;
+    will-change: position;
+}
+
+.cursor-circle.active {
+    transform: scale(1);
+}
+.cursor-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
 }

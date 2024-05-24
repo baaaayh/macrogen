@@ -1,3 +1,8 @@
+.wrap {
+    position: relative;
+    z-index: 3;
+}
+
 .main-section {
     &__inner {
         height: 100%;
@@ -6,6 +11,26 @@
         height: 100vh;
         .main-section__inner {
             position: relative;
+        }
+        &.active {
+            .main-kv__text {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .label {
+                animation: labelAnimation 1.34s forwards;
+                animation-delay: 1.93s;
+                &--01 {animation-delay: 1.53s;}
+                &--02 {animation-delay: 1.41s;}
+                &--03 {animation-delay: 1.67s;}
+                &--04 {animation-delay: 1.36s;}
+                &--05 {animation-delay: 1.39s;}
+                &--06 {animation-delay: 1.43s;}
+                &--07 {animation-delay: 1.23s;}
+                &--08 {animation-delay: 1.485s;}
+                &--09 {animation-delay: 1.64s;}
+                &--10 {animation-delay: 1.42s;}
+            }
         }
     }
     &--02 {
@@ -102,12 +127,16 @@
             font-size: 60px;
             font-weight: 700;
             line-height: 80px;
-            color: #fff;
             
         }
         .btn-wrap {
             margin-top: 60px;
         }
+    }
+    &--08 {
+        padding: 200px 0;
+        position: relative;
+        background-color: #eee;
     }
 }
 
@@ -126,10 +155,8 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 1;
-        color: #000;
-        
-
-        
+        color: #fff;
+                
         &::before {
             content:'';
             position: absolute;
@@ -141,11 +168,21 @@
             width: 8px;
             height: 10px;
             background: url(../images/sub/icon_scroll_arrow.svg) center / auto no-repeat;
-            filter: invert(1);
             animation: scrollArrow 1.3s ease infinite;
         }
     }
+
+    &.black {
+        .scroll-down__icon {
+            color: #000;
+            &::before {
+                filter: invert(1);
+            }
+        }
+    }
 }
+
+
 
 @keyframes scrollArrow {
     0%{ top: 0; }
@@ -180,6 +217,18 @@
             }
         }
     }
+    &__mobile {
+        position: absolute;
+        bottom: -24vh;
+        left: 50%;
+        transform: translateX(-50%) scale(0.7);
+        transform-origin: bottom center;
+        // transition: 1.2s ease;
+        // transition-delay: 1.2s;
+        img {
+            height: 45vh;
+        }
+    }
     &__bg {
         position: absolute;
         top: 0;
@@ -200,6 +249,7 @@
         position: relative;
         height: 100%;
         z-index: 1;
+        overflow: hidden;
         .inner {
             display: flex;
             width: 100%;
@@ -219,6 +269,8 @@
         }
         
         .btn-wrap {
+            opacity: 0;
+            visibility: hidden;
             display: flex;
             gap: 15px;
             margin-top: 40px;
@@ -229,6 +281,7 @@
         opacity: 0;
         transform: translateY(100px);
         transition: 0.8s ease;
+        pointer-events: none;
         &--01 {
             transition-delay: 0.8s;
         }
@@ -238,26 +291,11 @@
     }
 
     .swiper-slide-active {
-        .main-kv__text {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .label {
-            animation: labelAnimation 1.34s forwards;
-            animation-delay: 1.93s;
-            &--01 {animation-delay: 1.53s;}
-            &--02 {animation-delay: 1.41s;}
-            &--03 {animation-delay: 1.67s;}
-            &--04 {animation-delay: 1.36s;}
-            &--05 {animation-delay: 1.39s;}
-            &--06 {animation-delay: 1.43s;}
-            &--07 {animation-delay: 1.23s;}
-            &--08 {animation-delay: 1.485s;}
-            &--09 {animation-delay: 1.64s;}
-            &--10 {animation-delay: 1.42s;}
+        .main-kv__mobile {
+            bottom: -23vh;
         }
     }
-
+    
 } 
 
 
@@ -371,7 +409,7 @@
 .toggle-box {
     opacity: 0;
     transform: translateY(100px);
-    transition: 1.23s ease;
+    transition: 0.53s ease;
     &.active {
         opacity: 1;
         transform: translateY(0);
@@ -752,5 +790,89 @@
     }
     &__item {
         flex: none;
+    }
+}
+
+
+.number-mac {
+    display: flex;
+    justify-content: space-between;
+    gap: 157px;
+    &__left {
+        flex-basis: 665px;
+        flex-shrink: 0;
+        padding: 50px 0;
+        h2 {
+            font-size: 80px;
+            line-height: 100px;
+            font-weight: 700;
+        }
+    }
+
+    &__list {
+        margin-top: 75px;
+    }
+    &__item {
+        padding: 35px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        position: relative;
+        &::before {
+            content:'';
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #000;
+            transition: 0.34s ease;
+        }
+        &.active {
+            &::before {
+                width: 100%;
+            }
+            .number-mac__title {
+                background: linear-gradient(90deg, #8CD05F 0%, #56A1DE 77.25%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .number-mac__text {
+                color: #000;
+            }
+        }
+    }
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 245px;
+    }
+    button {
+        width: 100%;
+    }
+    &__title {
+        flex-basis: 210px;
+        flex-shrink: 0;
+        font-size: 80px;
+        line-height: 1;
+        color: #ccc;
+        font-weight: bold;
+        text-align: left;
+    }
+    &__text {
+        flex-basis: 255px;
+        flex-shrink: 0;
+        font-size: 24px;
+        line-height: 34px;
+        color: #999;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    &__right {
+        flex: 1;
+        border-radius: 20px;
+        overflow: hidden;
     }
 }

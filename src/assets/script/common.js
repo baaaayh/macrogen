@@ -22,7 +22,7 @@ $(function () {
             const lenis = new Lenis();
             lenis.on('scroll', function () {});
             function raf(time) {
-                lenis.raf(time * 0.9);
+                lenis.raf(time * 0.5);
                 requestAnimationFrame(raf);
             }
             requestAnimationFrame(raf);
@@ -73,6 +73,16 @@ $(function () {
                     }
                 }
             });
+
+            if ($(window).scrollTop() < $(sections[0]).offset().top + $(sections[0]).innerHeight() / 2) {
+                if ($('.swiper-slide-active').hasClass('main-kv__slide--02')) {
+                    $('.header').removeClass('black');
+                    $('.scroll-down').removeClass('black');
+                } else {
+                    $('.header').addClass('black');
+                    $('.scroll-down').addClass('black');
+                }
+            }
 
             lastScrollTop = scrollTop;
         },

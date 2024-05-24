@@ -5,14 +5,196 @@ $(function () {
     AOS.init();
 
     const main = {
+        scrollTriggerInit() {
+            gsap.registerPlugin(ScrollTrigger);
+            // const arr = gsap.utils.toArray('.main-section');
+
+            const tl1 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.main-section--kv',
+                    start: 'center center',
+                    end: '+=150%',
+                    scrub: 1,
+                    toggleClass: 'active',
+                    pin: '.main-section--kv',
+                },
+            });
+
+            tl1.to('.main-kv__mobile', {
+                bottom: 0,
+                transform: 'translateX(-50%) scale(0.8)',
+            })
+                .to(
+                    '.main-kv__content .btn-wrap',
+                    {
+                        opacity: 1,
+                        visibility: 'visible',
+                    },
+                    '<'
+                )
+                .to('.main-section--kv', {
+                    duration: 0.5,
+                });
+
+            const tl2 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.main-section--02 h2',
+                    start: 'center center',
+                    end: '+=400%',
+                    scrub: 1,
+                    pin: '.main-section--02 h2',
+                },
+            });
+
+            tl2.to('.section02__row--01 span', {
+                width: '0%',
+                duration: 80,
+            })
+                .to(
+                    '.section02__row--02 span',
+                    {
+                        width: '0%',
+                        delay: 60,
+                        duration: 100,
+                    },
+                    '<'
+                )
+                .to('.section02__row--01', {
+                    opacity: 0,
+                    filter: 'blur(5px)',
+                    duration: 30,
+                })
+                .to(
+                    '.section02__row--02',
+                    {
+                        opacity: 0,
+                        filter: 'blur(5px)',
+                        duration: 30,
+                    },
+                    '<'
+                );
+
+            const tl3 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.main-section--03',
+                    start: 'center center',
+                    end: '+=550%',
+                    scrub: 1,
+                    pin: true,
+                    onEnter: () => {
+                        document.querySelector('.main-section--03').parentNode.classList.add('custom-pin-spacer');
+                    },
+                },
+            });
+
+            const tl4 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.parallax__bg',
+                    start: 'center center',
+                    endTrigger: '.main-section--04',
+                    end: 'bottom bottom',
+                    scrub: 1,
+                    pin: true,
+                },
+            });
+
+            const tl5 = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.toggle-box',
+                    start: 'top bottom',
+                    end: '+=200%',
+                    toggleClass: 'active',
+                },
+            });
+
+            const newsList = gsap.utils.toArray('.news__container ul li');
+
+            newsList.forEach((item, index) => {
+                gsap.to(item, {
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top bottom-=300px',
+                        onEnter: () => item.classList.add('active'),
+                    },
+                });
+            });
+
+            tl3.to('.parallax__row--01', {
+                opacity: 1,
+                x: '0',
+                duration: 6,
+            })
+                .to(
+                    '.parallax__row--02',
+                    {
+                        opacity: 1,
+                        x: '0',
+                        duration: 6,
+                    },
+                    '<'
+                )
+                .to(
+                    '.parallax__row--03',
+                    {
+                        opacity: 1,
+                        x: '0',
+                        duration: 6,
+                    },
+                    '<'
+                )
+                .to('.parallax__row', {
+                    duration: 4,
+                })
+                .to('.parallax__block--top', {
+                    y: '-50vh',
+                    duration: 8,
+                })
+                .to(
+                    '.parallax__block--bottom',
+                    {
+                        y: '50vh',
+                        duration: 8,
+                    },
+                    '<'
+                )
+                .to(
+                    '.parallax__block--top .parallax__text--01',
+                    {
+                        top: 'calc(100% + 100px)',
+                        duration: 5,
+                    },
+                    '<'
+                )
+                .to(
+                    '.parallax__block--bottom .parallax__text--01',
+                    {
+                        bottom: 'calc(100% + 100px)',
+                        duration: 5,
+                    },
+                    '<'
+                )
+                .to(
+                    '.parallax__content',
+                    {
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        opacity: 1,
+                        duration: 10,
+                    },
+                    '<'
+                )
+                .to('.main-section--03', {
+                    duration: 2,
+                });
+        },
         mainKvInit() {
             let mainKV = new Swiper('.main-kv', {
                 slidesPerView: 'auto',
                 parallax: true,
-                // autoplay: {
-                //     delay: 7000,
-                //     disableOnInteraction: false,
-                // },
+                autoplay: {
+                    delay: 7000,
+                    disableOnInteraction: false,
+                },
                 // allowTouchMove: false,
                 speed: 1000,
                 loop: true,
@@ -20,8 +202,32 @@ $(function () {
                 on: {
                     slideChangeTransitionEnd() {
                         $('.swiper-slide').find('.label-container').removeClass('ani');
+                        if ($('.swiper-slide-active').hasClass('main-kv__slide--02')) {
+                            $('.header').removeClass('black');
+                            $('.scroll-down').removeClass('black');
+                        } else {
+                            $('.header').addClass('black');
+                            $('.scroll-down').addClass('black');
+                        }
                     },
+                    slideChange() {},
                 },
+            });
+        },
+        sliderInit() {
+            let numberSlider = new Swiper('.number-mac__slider', {
+                slidesPerView: 1,
+                parallax: true,
+                allowTouchMove: false,
+                speed: 1000,
+                loop: true,
+                spaceBetween: 0,
+            });
+
+            $('.number-mac__item button').on('click', function () {
+                $(this).parents('.number-mac__item').addClass('active').siblings('.number-mac__item').removeClass('active');
+                let idx = $(this).parents('li').index();
+                numberSlider.slideTo(idx);
             });
         },
         toggleBox() {
@@ -32,7 +238,7 @@ $(function () {
         newsImage() {
             $('.news__item').hover(function () {
                 $(this).toggleClass('active');
-                $(this).find('.news__image').fadeToggle();
+                $(this).find('.news__image').stop().fadeToggle();
             });
         },
         marquee() {
@@ -106,10 +312,12 @@ $(function () {
             });
         },
         init() {
+            this.scrollTriggerInit();
             this.newsImage();
             this.toggleBox();
             this.marquee();
             this.mainKvInit();
+            this.sliderInit();
         },
     };
 
@@ -135,12 +343,300 @@ $(function () {
                 $('.swiper-slide-active .label-container').addClass('ani');
             });
         },
+        customCursor() {
+            const cursorCircle = document.getElementById('cursorCircle');
+            const customCursorLinks = document.querySelectorAll('a');
+
+            document.addEventListener('mousemove', (e) => {
+                cursorCircle.style.top = `${e.clientY}px`;
+                cursorCircle.style.left = `${e.clientX}px`;
+            });
+
+            customCursorLinks.forEach((link) => {
+                link.addEventListener('mouseenter', () => {
+                    cursorCircle.classList.add('active');
+                });
+                link.addEventListener('mouseleave', () => {
+                    cursorCircle.classList.remove('active');
+                });
+            });
+        },
         init() {
             this.addTransitionEndListener();
             $(window).on('mousemove', (e) => this.pointerPos(e));
+            this.customCursor();
+        },
+    };
+
+    let nations = [
+        {
+            name: 'area-uk',
+            office: [
+                {
+                    name: '마크로젠 강남본사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map01',
+                },
+                {
+                    name: '마크로젠 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map02',
+                },
+                {
+                    name: '마크로젠 모델동물센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map03',
+                },
+                {
+                    name: '마크로젠 대전지사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map04',
+                },
+                {
+                    name: '마크로젠 송도 글로벌 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map05',
+                },
+                {
+                    name: '마크로젠 세종캠퍼스',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map06',
+                },
+            ],
+        },
+        {
+            name: 'area-be',
+            office: [
+                {
+                    name: '마크로젠 강남본사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map01',
+                },
+                {
+                    name: '마크로젠 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map02',
+                },
+            ],
+        },
+        {
+            name: 'area-ch',
+            office: [
+                {
+                    name: '마크로젠 강남본사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map01',
+                },
+            ],
+        },
+        {
+            name: 'area-mc',
+            office: [
+                {
+                    name: '마크로젠 송도 글로벌 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map05',
+                },
+                {
+                    name: '마크로젠 세종캠퍼스',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map06',
+                },
+            ],
+        },
+        {
+            name: 'area-fr',
+            office: [
+                {
+                    name: '마크로젠 세종캠퍼스',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map06',
+                },
+            ],
+        },
+        {
+            name: 'area-de',
+            office: [
+                {
+                    name: '마크로젠 강남본사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map01',
+                },
+
+                {
+                    name: '마크로젠 송도 글로벌 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map05',
+                },
+                {
+                    name: '마크로젠 세종캠퍼스',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map06',
+                },
+            ],
+        },
+        {
+            name: 'area-es',
+            office: [
+                {
+                    name: '마크로젠 강남본사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map01',
+                },
+                {
+                    name: '마크로젠 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map02',
+                },
+            ],
+        },
+        {
+            name: 'area-it',
+            office: [
+                {
+                    name: '마크로젠 송도 글로벌 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map05',
+                },
+                {
+                    name: '마크로젠 세종캠퍼스',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map06',
+                },
+            ],
+        },
+        {
+            name: 'area-yt',
+            office: [
+                {
+                    name: '마크로젠 강남본사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map01',
+                },
+                {
+                    name: '마크로젠 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map02',
+                },
+                {
+                    name: '마크로젠 모델동물센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map03',
+                },
+            ],
+        },
+        {
+            name: 'area-sg',
+            office: [
+                {
+                    name: '마크로젠 대전지사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map04',
+                },
+                {
+                    name: '마크로젠 송도 글로벌 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map05',
+                },
+                {
+                    name: '마크로젠 세종캠퍼스',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map06',
+                },
+            ],
+        },
+        {
+            name: 'area-kr',
+            office: [
+                {
+                    name: '마크로젠 송도 글로벌 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map05',
+                },
+            ],
+        },
+        {
+            name: 'area-jp',
+            office: [
+                {
+                    name: '마크로젠 강남본사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map01',
+                },
+                {
+                    name: '마크로젠 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map02',
+                },
+                {
+                    name: '마크로젠 모델동물센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map03',
+                },
+                {
+                    name: '마크로젠 대전지사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map04',
+                },
+            ],
+        },
+        {
+            name: 'area-us',
+            office: [
+                {
+                    name: '마크로젠 강남본사',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map01',
+                },
+            ],
+        },
+        {
+            name: 'area-mx',
+            office: [
+                {
+                    name: '마크로젠 송도 글로벌 지놈센터',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map05',
+                },
+                {
+                    name: '마크로젠 세종캠퍼스',
+                    location: '서울, 대한민국',
+                    img: 'thumb_map06',
+                },
+            ],
+        },
+    ];
+    const map = {
+        getOfficeList(e) {
+            const info = $(e.target).attr('class');
+            let office;
+            nations.map((item, index) => {
+                if (item.name === info) {
+                    office = item.office;
+                }
+            });
+
+            $('.map-thumb ul').empty();
+            office.map((item, index) => {
+                $('.map-thumb ul').append(`<li>
+                                            <div class="map-thumb__inner">
+                                                <div class="map-thumb__image">
+                                                    <img src="../resources/assets/images/main/${item.img}.svg" alt="" />
+                                                </div>
+                                                <div class="map-thumb__text">
+                                                    <b>${item.name}</b>
+                                                    <span>${item.location}</span>
+                                                </div>
+                                            </div>
+                                        </li>`);
+            });
+        },
+        init() {
+            $('.image-map area').on('click', (e) => this.getOfficeList(e));
         },
     };
 
     main.init();
     mouse.init();
+    map.init();
 });
