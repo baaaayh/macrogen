@@ -126,7 +126,7 @@
         font-size: 14px;
         font-weight: 400;
         line-height: 1;
-        color: #fff;
+        color: #000;
         &::before {
             content:'';
             position: absolute;
@@ -138,6 +138,7 @@
             width: 8px;
             height: 10px;
             background: url(../images/sub/icon_scroll_arrow.svg) center / auto no-repeat;
+            filter: invert(1);
             animation: scrollArrow 1.3s ease infinite;
         }
     }
