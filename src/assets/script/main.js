@@ -5,7 +5,28 @@ $(function () {
     AOS.init();
 
     const main = {
-        scrollTriggerInit() {
+        mainKvInit() {
+            return new Swiper('.main-kv', {
+                slidesPerView: 'auto',
+                parallax: true,
+                speed: 1000,
+                loop: true,
+                spaceBetween: 0,
+                on: {
+                    slideChangeTransitionEnd() {
+                        $('.swiper-slide').find('.label-container').removeClass('ani');
+                        if ($('.swiper-slide-active').hasClass('main-kv__slide--02')) {
+                            $('.header').removeClass('black');
+                            $('.scroll-down').removeClass('black');
+                        } else {
+                            $('.header').addClass('black');
+                            $('.scroll-down').addClass('black');
+                        }
+                    },
+                },
+            });
+        },
+        scrollTriggerInit(mainKV) {
             gsap.registerPlugin(ScrollTrigger);
             // const arr = gsap.utils.toArray('.main-section');
 
@@ -13,28 +34,33 @@ $(function () {
                 scrollTrigger: {
                     trigger: '.main-section--kv',
                     start: 'center center',
-                    end: '+=150%',
+                    end: '+=400%',
                     scrub: 1,
                     toggleClass: 'active',
                     pin: '.main-section--kv',
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+                        const totalSlides = mainKV.slides.length;
+                        const slideIndex = Math.round(progress * (totalSlides - 1));
+                        mainKV.slideTo(slideIndex, 1000);
+                    },
                 },
             });
 
-            tl1.to('.main-kv__mobile', {
-                bottom: 0,
-                transform: 'translateX(-50%) scale(0.8)',
-            })
-                .to(
-                    '.main-kv__content .btn-wrap',
-                    {
-                        opacity: 1,
-                        visibility: 'visible',
-                    },
-                    '<'
-                )
-                .to('.main-section--kv', {
-                    duration: 0.5,
-                });
+            // tl1.to('.main-kv__mobile', {
+            //     bottom: 0,
+            //     transform: 'translateX(-50%) scale(0.8)',
+            // })
+            tl1.to(
+                '.main-kv__content .btn-wrap',
+                {
+                    opacity: 1,
+                    visibility: 'visible',
+                },
+                '<'
+            ).to('.main-section--kv', {
+                duration: 0.5,
+            });
 
             const tl2 = gsap.timeline({
                 scrollTrigger: {
@@ -187,33 +213,33 @@ $(function () {
                     duration: 2,
                 });
         },
-        mainKvInit() {
-            let mainKV = new Swiper('.main-kv', {
-                slidesPerView: 'auto',
-                parallax: true,
-                autoplay: {
-                    delay: 7000,
-                    disableOnInteraction: false,
-                },
-                // allowTouchMove: false,
-                speed: 1000,
-                loop: true,
-                spaceBetween: 0,
-                on: {
-                    slideChangeTransitionEnd() {
-                        $('.swiper-slide').find('.label-container').removeClass('ani');
-                        if ($('.swiper-slide-active').hasClass('main-kv__slide--02')) {
-                            $('.header').removeClass('black');
-                            $('.scroll-down').removeClass('black');
-                        } else {
-                            $('.header').addClass('black');
-                            $('.scroll-down').addClass('black');
-                        }
-                    },
-                    slideChange() {},
-                },
-            });
-        },
+        // mainKvInit() {
+        //     let mainKV = new Swiper('.main-kv', {
+        //         slidesPerView: 'auto',
+        //         parallax: true,
+        //         autoplay: {
+        //             delay: 7000,
+        //             disableOnInteraction: false,
+        //         },
+        //         // allowTouchMove: false,
+        //         speed: 1000,
+        //         loop: true,
+        //         spaceBetween: 0,
+        //         on: {
+        //             slideChangeTransitionEnd() {
+        //                 $('.swiper-slide').find('.label-container').removeClass('ani');
+        //                 if ($('.swiper-slide-active').hasClass('main-kv__slide--02')) {
+        //                     $('.header').removeClass('black');
+        //                     $('.scroll-down').removeClass('black');
+        //                 } else {
+        //                     // $('.header').addClass('black');
+        //                     $('.scroll-down').addClass('black');
+        //                 }
+        //             },
+        //             slideChange() {},
+        //         },
+        //     });
+        // },
         sliderInit() {
             let numberSlider = new Swiper('.number-mac__slider', {
                 slidesPerView: 1,
@@ -312,7 +338,8 @@ $(function () {
             });
         },
         init() {
-            this.scrollTriggerInit();
+            const mainKV = this.mainKvInit();
+            this.scrollTriggerInit(mainKV);
             this.newsImage();
             this.toggleBox();
             this.marquee();

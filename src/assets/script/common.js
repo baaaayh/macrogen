@@ -76,11 +76,12 @@ $(function () {
 
             if ($(window).scrollTop() < $(sections[0]).offset().top + $(sections[0]).innerHeight() / 2) {
                 if ($('.swiper-slide-active').hasClass('main-kv__slide--02')) {
-                    $('.header').removeClass('black');
                     $('.scroll-down').removeClass('black');
+                    $('.header').removeClass('black');
                 } else {
-                    $('.header').addClass('black');
-                    $('.scroll-down').addClass('black');
+                    // $('.header').removeClass('black');
+                    // $('.header').addClass('black');
+                    // $('.scroll-down').addClass('black');
                 }
             }
 

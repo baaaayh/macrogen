@@ -6,11 +6,15 @@
 @import 'common/media';
 
 html {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
+
 html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera*/
+    display: none;
+    /* Chrome, Safari, Opera*/
 }
 
 
@@ -22,6 +26,7 @@ html::-webkit-scrollbar {
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
+
     &__inner {
         position: relative;
         display: inline-flex;
@@ -34,8 +39,9 @@ html::-webkit-scrollbar {
         background-color: rgba(255, 255, 255, 0.1);
         font-size: 0;
 
-        &::before, &::after {
-            content:'';
+        &::before,
+        &::after {
+            content: '';
             position: absolute;
             top: 50%;
             left: 50%;
@@ -47,9 +53,11 @@ html::-webkit-scrollbar {
             transform-origin: center;
             transition: 0.24s ease;
         }
+
         &::before {
             margin-top: -5px;
         }
+
         &::after {
             margin-top: 5px;
         }
@@ -57,15 +65,19 @@ html::-webkit-scrollbar {
 
     &.active {
         .btn-allmenu__inner {
-            &::before, &::after {
+
+            &::before,
+            &::after {
                 position: absolute;
             }
-            &::before{
+
+            &::before {
                 margin-top: 0;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%) rotate(45deg);
             }
+
             &::after {
                 margin-top: 0;
                 top: 50%;
@@ -80,6 +92,7 @@ html::-webkit-scrollbar {
     display: inline-block;
     width: 100%;
     padding: 20px 0;
+
     &__inner {
         position: relative;
         display: inline-block;
@@ -91,7 +104,7 @@ html::-webkit-scrollbar {
         color: #fff;
 
         &::before {
-            content:'';
+            content: '';
             position: absolute;
             top: 50%;
             right: 0;
@@ -110,6 +123,7 @@ html::-webkit-scrollbar {
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 27px;
     transition: 0.34s ease;
+
     &__text {
         position: relative;
         display: inline-block;
@@ -122,6 +136,7 @@ html::-webkit-scrollbar {
 
     &:hover {
         background-color: #fff;
+
         .btn-default__text {
             color: #000;
         }
@@ -129,25 +144,30 @@ html::-webkit-scrollbar {
 
     &--white {
         background-color: #fff;
+
         .btn-default__text {
             color: #000;
         }
 
         &:hover {
             background-color: rgba(255, 255, 255, 0.3);
+
             .btn-default__text {
                 color: #fff;
             }
         }
     }
+
     &--app {
         border: 1px solid #fff;
         background-color: #fff;
+
         .btn-default__text {
             padding-left: 21px;
             color: #000;
+
             &::before {
-                content:'';
+                content: '';
                 position: absolute;
                 top: 50%;
                 left: 0;
@@ -158,6 +178,7 @@ html::-webkit-scrollbar {
             }
         }
     }
+
     &--google {
         .btn-default__text {
             &::before {
@@ -165,6 +186,7 @@ html::-webkit-scrollbar {
             }
         }
     }
+
     &--apple {
         .btn-default__text {
             &::before {
@@ -195,31 +217,36 @@ html::-webkit-scrollbar {
     left: 0;
     width: 100%;
     z-index: 2;
+
     &__inner {
         padding-right: 100px;
     }
-    
+
     &__logo {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
         a {
             img {
                 width: 160px;
             }
         }
     }
+
     .gnb {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         &__box {
-            > ul {
+            >ul {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                > li {
+
+                >li {
                     a {
                         display: block;
                         padding: 0 25px;
@@ -232,8 +259,9 @@ html::-webkit-scrollbar {
                 }
             }
         }
-        
+
     }
+
     .snb {
         position: fixed;
         top: 0;
@@ -243,55 +271,67 @@ html::-webkit-scrollbar {
         height: 100vh;
         padding: 15px 20px;
         text-align: center;
-        > ul {
-            > li {
+
+        >ul {
+            >li {
                 &:first-child {
                     margin-top: 0;
                 }
+
                 margin-top: 45px;
                 font-size: 0;
             }
         }
     }
+
     &.black {
         .gnb__box {
-            > ul {
-                > li {
+            >ul {
+                >li {
                     a {
                         color: #000;
                     }
                 }
             }
         }
+
         .btn-allmenu {
-            border: 1px solid rgba(0, 0, 0, 1);
-            background-color: rgba(0, 0, 0, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
+
             &__inner {
-                &::before, &::after {
+
+                &::before,
+                &::after {
                     background-color: #fff;
                 }
             }
         }
+
         .btn-lang__inner {
-            color: #000;
+            color: #fff;
+
             &::before {
-                background: url(../images/common/icon_lang_arrow_black.svg) center / auto no-repeat;
+                background: url(../images/common/icon_lang_arrow_white.svg) center / auto no-repeat;
             }
         }
     }
 }
+
 .scroll {
     position: absolute;
     top: 0;
     left: 0;
     width: 2px;
     height: 100%;
+
     &__bg {
         display: inline-block;
         width: 100%;
         height: 100%;
         background-color: rgba(255, 255, 255, 0.2);
     }
+
     &__bar {
         position: absolute;
         display: inline-block;
@@ -305,8 +345,9 @@ html::-webkit-scrollbar {
 .header {
     &.black {
         .scroll__bg {
-            background-color: rgba(0, 0, 0, 0.1)
+            background-color: rgba(0, 0, 0, 0.2);
         }
+
         .scroll__bar {
             background-color: #000;
         }
@@ -319,6 +360,7 @@ html::-webkit-scrollbar {
         object-position: center;
     }
 }
+
 .cursor-circle {
     position: absolute;
     top: 50%;
@@ -333,7 +375,8 @@ html::-webkit-scrollbar {
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    pointer-events: none; /* Make it unclickable */
+    pointer-events: none;
+    /* Make it unclickable */
     transform: scale(0);
     margin-left: -50px;
     margin-top: -50px;
@@ -344,6 +387,7 @@ html::-webkit-scrollbar {
 .cursor-circle.active {
     transform: scale(1);
 }
+
 .cursor-layer {
     position: fixed;
     top: 0;
@@ -352,4 +396,67 @@ html::-webkit-scrollbar {
     height: 100%;
     pointer-events: none;
     z-index: 9999;
+}
+
+
+.scroll-down {
+    position: absolute;
+    display: inline-block;
+    right: 40px;
+    bottom: 50px;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    z-index: 1;
+    font-size: 0;
+
+    &__icon {
+        position: relative;
+        padding-top: 20px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        color: #fff;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            margin-left: -2px;
+            top: 0%;
+            transform: translateX(-50%) rotate(180deg);
+            display: inline-block;
+            width: 8px;
+            height: 10px;
+            background: url(../images/sub/icon_scroll_arrow.svg) center / auto no-repeat;
+            animation: scrollArrow 1.3s ease infinite;
+        }
+    }
+
+    &.black {
+        .scroll-down__icon {
+            color: #000;
+
+            &::before {
+                filter: invert(1);
+            }
+        }
+    }
+}
+
+@keyframes scrollArrow {
+    0% {
+        top: 0;
+    }
+
+    45% {
+        top: -8px;
+    }
+
+    55% {
+        top: -8px;
+    }
+
+    100% {
+        top: 0;
+    }
 }
