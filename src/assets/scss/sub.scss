@@ -1,4 +1,80 @@
-.sub-section {}
+.sub-section {
+    &--03 {
+        height: 100vh;
+        background-color: #eee;
+
+        .sub-section__inner {
+            height: 100%;
+        }
+
+        .inner {
+            height: 100%;
+        }
+    }
+}
+
+.sticky-area {
+    position: relative;
+}
+
+.section-nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #eee;
+
+    .inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+    }
+}
+
+.lnb {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        display: inline-block;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    ul {
+        display: flex;
+        align-items: center;
+
+        li {
+            a {
+                font-size: 16px;
+                color: #666;
+            }
+
+            &.active {
+                a {
+                    font-size: 16px;
+                    color: #000;
+                    line-height: 65px;
+                }
+            }
+        }
+    }
+}
+
+.down-area {
+    ul {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+}
+
 
 .sub-kv {
     height: 100vh;
@@ -214,5 +290,41 @@
             opacity: 0;
             transform: translateX(-100px);
         }
+    }
+}
+
+.sub-banner {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1345px;
+    margin: 0 auto;
+    height: 100%;
+
+    &__left {
+        padding-top: 100px;
+
+        h2 {
+            font-size: 80px;
+            line-height: 100px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #FF7F40 0%, #E50050 53.53%, #56A1DE 106.71%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            margin-top: 50px;
+            font-size: 20px;
+            line-height: 30px;
+        }
+    }
+
+    &__right {
+        position: absolute;
+        right: 0;
+        bottom: 0;
     }
 }
