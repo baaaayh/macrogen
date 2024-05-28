@@ -22,8 +22,8 @@
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
     background-color: #eee;
+    z-index: 1;
 
     .inner {
         display: flex;
@@ -31,12 +31,20 @@
         align-items: center;
         padding: 8px 0;
     }
+
+    &__inner {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+
+    }
 }
 
 .lnb {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
 
     span {
         display: inline-block;
@@ -48,6 +56,8 @@
     ul {
         display: flex;
         align-items: center;
+        margin-left: 70px;
+
 
         li {
             a {
@@ -58,8 +68,8 @@
             &.active {
                 a {
                     font-size: 16px;
-                    color: #000;
                     line-height: 65px;
+                    color: #000;
                 }
             }
         }
@@ -91,8 +101,8 @@
     .inner {
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: flex-end;
+        align-items: center;
         height: 100%;
         padding: 105px 0;
     }
@@ -102,9 +112,9 @@
         left: 50%;
         bottom: 0;
         transform: translateX(-50%);
-        height: 100%;
         overflow: hidden;
         width: 0%;
+        height: 100%;
 
         &.aos-animate {
             width: 100%;
@@ -112,12 +122,12 @@
 
         img {
             position: relative;
-            left: 50%;
             top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             width: auto;
-            height: auto;
             min-width: 100vw;
+            height: auto;
             min-height: 100vh;
         }
     }
@@ -128,8 +138,8 @@
         h2 {
             span {
                 font-size: 120px;
-                line-height: 150px;
                 font-weight: 600;
+                line-height: 150px;
                 color: #fff;
             }
         }
@@ -137,11 +147,11 @@
 }
 
 .breadcrumb {
-    position: relative;
     display: inline-block;
+    position: relative;
     margin-top: 40px;
-    background-color: #fff;
     border-radius: 25px;
+    background-color: #fff;
     z-index: 1;
 
     >ul {
@@ -151,27 +161,27 @@
         padding: 0 5px;
 
         >li {
-            position: relative;
             display: inline-block;
+            position: relative;
             padding-left: 4px;
 
             &::before {
-                content: '/';
                 position: absolute;
                 top: 50%;
                 left: 0;
-                font-size: 18px;
-                color: #ddd;
-                line-height: 1;
                 transform: translateY(-50%);
+                content: '/';
+                font-size: 18px;
+                line-height: 1;
+                color: #ddd;
             }
 
             >a {
                 display: block;
                 padding: 0 25px;
-                line-height: 50px;
                 background: url(../images/sub/icon_home.svg) center / auto no-repeat;
                 font-size: 0;
+                line-height: 50px;
             }
 
             &:first-child {
@@ -190,19 +200,19 @@
             padding: 0 25px;
 
             span {
-                position: relative;
                 display: inline-block;
+                position: relative;
                 padding-right: 16px;
                 font-size: 16px;
-                line-height: 50px;
                 font-weight: 700;
+                line-height: 50px;
 
                 &::after {
-                    content: '';
+                    display: inline-block;
                     position: absolute;
                     top: 50%;
                     right: 0;
-                    display: inline-block;
+                    content: '';
                     width: 8px;
                     height: 4px;
                     background: url(../images/sub/icon_arrow_black.svg) center/ auto no-repeat;
@@ -216,15 +226,15 @@
             top: 54px;
             left: 0;
             width: 100%;
-            background-color: #fff;
             border-radius: 10px;
+            background-color: #fff;
 
             li {
                 a {
                     display: block;
+                    padding: 10px 0;
                     font-size: 16px;
                     font-weight: 700;
-                    padding: 10px 0;
                 }
             }
         }
@@ -254,62 +264,62 @@
     }
 
     &__content {
-        position: relative;
         display: flex;
-        height: 100%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: relative;
+        height: 100%;
 
         h2 {
             font-size: 80px;
-            line-height: 100px;
             font-weight: 700;
-            text-align: center;
+            line-height: 100px;
             color: #fff;
+            text-align: center;
         }
 
         p {
-            opacity: 0;
             margin-top: 50px;
             font-size: 18px;
-            line-height: 24px;
             font-weight: 400;
-            text-align: center;
+            line-height: 24px;
             color: #fff;
+            text-align: center;
+            opacity: 0;
         }
     }
 
     &__row {
         &--01 {
-            opacity: 0;
             transform: translateX(-100px);
+            opacity: 0;
         }
 
         &--02 {
-            opacity: 0;
             transform: translateX(-100px);
+            opacity: 0;
         }
     }
 }
 
 .sub-banner {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     max-width: 1345px;
-    margin: 0 auto;
     height: 100%;
+    margin: 0 auto;
 
     &__left {
         padding-top: 100px;
 
         h2 {
-            font-size: 80px;
-            line-height: 100px;
-            font-weight: 700;
             background: linear-gradient(90deg, #FF7F40 0%, #E50050 53.53%, #56A1DE 106.71%);
+            font-size: 80px;
+            font-weight: 700;
+            line-height: 100px;
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;

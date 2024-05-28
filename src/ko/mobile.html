@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <style>
+            @charset "UTF-8";
+            /* reset */
+            * {
+                margin: 0;
+                padding: 0;
+                vertical-align: top;
+                box-sizing: border-box;
+            }
+            ul,
+            li,
+            ol {
+                list-style: none;
+            }
+            img {
+                max-width: 100%;
+            }
+            a {
+                text-decoration: none;
+            }
+            button {
+                border: 0 none;
+                background: transparent;
+                cursor: pointer;
+            }
+            body {
+                -ms-overflow-style: none;
+            }
+            ::-webkit-scrollbar {
+                display: none;
+            }
+            ::selection {
+                color: #fff;
+                background-color: #0082c9;
+            }
+            .wrap {
+                overflow: hidden;
+            }
+            .clearfix::after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+            /* common */
+            .mo {
+                background: #f1f1f1;
+            }
+            .mobile {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 436px;
+                height: 850px;
+                transform: translate(-50%, -50%);
+                background: url(../resources/assets/images/mo/mobile.png) no-repeat center top;
+                background-size: contain;
+            }
+            .mo-content {
+                overflow-y: scroll;
+                overflow-x: hidden;
+                position: absolute;
+                top: 20px;
+                left: 31px;
+                width: 375px;
+                height: 812px;
+                border-radius: 40px;
+            }
+            .mobox {
+                position: relative;
+                font-size: 16px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body class="mo">
+        <div class="mobile">
+            <div class="mo-content">
+                <div class="mobox" data-bg="default">
+                    <div class="boxs">
+                        <iframe src="./index_mo.html" width="375px" height="872px" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
