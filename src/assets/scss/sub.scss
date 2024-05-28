@@ -11,6 +11,78 @@
             height: 100%;
         }
     }
+
+    &--04 {
+        padding: 200px 0 150px;
+
+        .sub-section__inner {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sub-section__top {
+            margin-left: auto;
+        }
+
+        .sub-section__bottom {
+            margin: 150px auto 0 auto;
+        }
+    }
+
+    &--05 {
+        padding: 100px 0 250px;
+
+
+        .sub-section__top {
+
+
+            h2 {
+                font-size: 60px;
+                text-align: center;
+                font-weight: 700;
+                line-height: 1
+            }
+        }
+
+        .sub-section__bottom {
+            margin-top: 120px
+        }
+    }
+
+    &--06 {
+        padding: 250px 0 250px;
+        background-color: #eee;
+
+        .sub-section__top {
+            h2 {
+                font-size: 60px;
+                text-align: center;
+                font-weight: 700;
+                line-height: 1
+            }
+        }
+
+        .sub-section__bottom {
+            margin-top: 120px;
+        }
+    }
+
+    &--07 {
+        padding: 150px 0 150px;
+
+        .sub-section__top {
+            h2 {
+                font-size: 60px;
+                text-align: center;
+                font-weight: 700;
+                line-height: 1
+            }
+        }
+
+        .sub-section__bottom {
+            margin-top: 120px;
+        }
+    }
 }
 
 .sticky-area {
@@ -29,7 +101,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 0;
+
     }
 
     &__inner {
@@ -57,6 +129,7 @@
         display: flex;
         align-items: center;
         margin-left: 70px;
+        gap: 50px;
 
 
         li {
@@ -67,9 +140,10 @@
 
             &.active {
                 a {
-                    font-size: 16px;
-                    line-height: 65px;
                     color: #000;
+                    border-bottom: 2px solid;
+                    line-height: 70px;
+                    font-weight: bold;
                 }
             }
         }

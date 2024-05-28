@@ -127,8 +127,8 @@ $(function () {
             const tl5 = gsap.timeline({
                 scrollTrigger: {
                     trigger: '.toggle-box',
-                    start: 'top bottom',
-                    end: '+=200%',
+                    start: () => (window.innerWidth <= 375 ? 'top-=20% top' : 'top bottom'),
+                    end: () => (window.innerWidth <= 375 ? '+=240%' : '+=200%'),
                     toggleClass: 'active',
                 },
             });
@@ -257,20 +257,27 @@ $(function () {
             });
         },
         toggleBox() {
-            $('.toggle-box__item').hover(function () {
-                $(this).toggleClass('active');
-            });
+            if ($(window).width() <= 375) {
+                $('.toggle-box__item').addClass('active');
+            } else {
+                $('.toggle-box__item').hover(function () {
+                    $(this).toggleClass('active');
+                });
+            }
         },
         newsImage() {
-            $('.news__item').hover(function () {
-                $(this).toggleClass('active');
-                $(this).find('.news__image').stop().fadeToggle();
-            });
+            if ($(window).width() > 375) {
+                $('.news__item').hover(function () {
+                    $(this).toggleClass('active');
+                    $(this).find('.news__image').stop().fadeToggle();
+                });
+            }
         },
         marquee() {
             const rows = document.querySelectorAll('.rolling__inner');
             const speed = 1; // 이동 속도 (픽셀)
             const interval = 20; // 이동 간격 (밀리초)
+            const isSmallScreen = window.innerWidth <= 375;
 
             function cloneItems(row) {
                 const rowWidth = row.offsetWidth;
@@ -279,7 +286,7 @@ $(function () {
                 items.forEach((item) => {
                     const clone = item.cloneNode(true);
                     row.appendChild(clone);
-                    totalWidth += clone.offsetWidth + 20; // 아이템 너비 + 마진
+                    totalWidth += clone.offsetWidth + (isSmallScreen ? 10 : 20);
                 });
                 if (totalWidth < rowWidth * 2) {
                     cloneItems(row);
@@ -298,7 +305,7 @@ $(function () {
                 }
 
                 if (direction === 'left') {
-                    if (Math.abs(currentTranslateX) >= firstItemWidth + 20) {
+                    if (Math.abs(currentTranslateX) >= firstItemWidth + (isSmallScreen ? 10 : 20)) {
                         // 아이템 너비 + 마진
                         row.style.transition = 'none'; // 트랜지션 일시 중지
                         row.style.transform = 'translateX(0)';
@@ -312,7 +319,7 @@ $(function () {
                 } else if (direction === 'right') {
                     if (currentTranslateX >= 0) {
                         row.style.transition = 'none'; // 트랜지션 일시 중지
-                        row.style.transform = `translateX(-${firstItemWidth + 20}px)`;
+                        row.style.transform = `translateX(-${firstItemWidth + (isSmallScreen ? 10 : 20)}px)`;
                         row.insertBefore(row.lastElementChild, row.firstElementChild); // 마지막 아이템을 맨 앞으로 이동
                         setTimeout(() => {
                             row.style.transition = ''; // 트랜지션 재개
@@ -645,7 +652,7 @@ $(function () {
 
             $('.map-thumb ul').empty();
             office.map((item, index) => {
-                $('.map-thumb ul').append(`<li>
+                $('.map-thumb ul').append(`<li class="swiper-slide">
                                             <div class="map-thumb__inner">
                                                 <div class="map-thumb__image">
                                                     <img src="../resources/assets/images/main/${item.img}.svg" alt="" />

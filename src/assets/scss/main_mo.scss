@@ -1,0 +1,338 @@
+@media screen and (max-width: 375px) {
+    .wrap {
+        background-color: #fff;
+    }
+
+    .scroll,
+    .scroll-down {
+        display: none;
+    }
+
+    .inner {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+
+    .header {
+        &__logo {
+            top: 15px;
+            left: 20px;
+            transform: translate(0);
+
+            a {
+                img {
+                    width: 107px;
+                }
+            }
+        }
+
+        .gnb {
+            display: none;
+        }
+
+        .snb {
+            height: auto;
+
+            >ul {
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+                gap: 20px;
+
+                >li {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .main-section {
+        &--02 {
+            padding: 100px 0;
+
+            h2 {
+                font-size: 34px;
+                line-height: 1.3;
+            }
+        }
+
+        &--04 {
+            padding: 150px 0;
+
+            h2 {
+                font-size: 34px;
+                line-height: 1;
+                margin-bottom: 100px;
+            }
+        }
+
+        &--05 {
+            padding: 150px 0;
+
+            h2 {
+                font-size: 34px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 1.3
+            }
+        }
+
+        &--06 {
+            padding: 150px 0;
+
+            h2 {
+                font-size: 40px;
+                line-height: 1.25
+            }
+        }
+
+        &--07 {
+            padding: 200px 0;
+
+            h2 {
+                font-size: 34px;
+                line-height: 1.3
+            }
+
+            .btn-wrap {
+                display: inline-flex;
+            }
+        }
+
+        &--08 {
+            padding: 150px 0;
+        }
+    }
+
+
+
+    .toggle-box {
+        margin: 0 -15px;
+
+        &__inner {
+            flex-direction: column;
+            overflow: auto;
+            height: 1800px;
+        }
+    }
+
+    .parallax {
+        &__text {
+            &--01 {
+                font-size: 34px;
+                line-height: 1.3
+            }
+        }
+
+        &__content {
+            width: 323px;
+
+            h2 {
+                font-size: 38px;
+                line-height: 1;
+            }
+
+            p {
+                font-size: 16px;
+                margin-top: 30px;
+                line-height: 1.37
+            }
+
+            .btn-wrap {
+                margin: 50px auto 0 auto;
+                display: inline-block;
+            }
+        }
+    }
+
+    .number-mac {
+        display: block;
+
+        &__left {
+            padding: 0;
+
+            h2 {
+                font-size: 34px;
+                line-height: 1.3
+            }
+        }
+
+        &__right {
+            margin-top: 50px;
+        }
+
+        &__inner {
+            gap: unset;
+        }
+
+        &__title {
+            font-size: 40px;
+            flex-basis: 100px;
+        }
+
+        &__text {
+            flex-basis: 140px;
+            flex-shrink: 1;
+            font-size: 16px;
+            line-height: 1.37
+        }
+
+        &__item {
+            padding: 20px 0;
+        }
+
+        &__slider {
+            img {
+                width: 350px;
+                height: 250px;
+            }
+        }
+    }
+
+    .news {
+        &__date {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        &__container {
+            ul {
+                li {
+                    margin-top: 60px;
+                }
+            }
+        }
+
+        &__head {
+            font-size: 24px;
+            line-height: 1.4;
+            display: -webkit-box;
+            overflow: hidden;
+            height: auto;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
+        &__title {
+            padding-bottom: 30px;
+        }
+
+        &__content {
+            padding-top: 20px;
+        }
+
+        &__para {
+            font-size: 16px;
+            line-height: 1.37;
+        }
+
+        &__image {
+            display: block;
+            position: static;
+            margin-top: 40px;
+            transform: unset;
+        }
+    }
+
+    .map {
+        margin-top: 100px;
+    }
+
+    .map-thumb {
+        ul {
+            gap: 10px;
+
+            li {
+                flex-basis: 300px;
+                flex-shrink: 0;
+            }
+        }
+    }
+
+    .rolling {
+        margin-top: 100px;
+
+        &__item {
+            img {
+                width: 172px;
+                height: 70px;
+            }
+        }
+
+        &__row {
+            height: 70px;
+            margin-top: 10px;
+        }
+
+        &__inner {
+            gap: 10px;
+        }
+    }
+
+    .btn-lang {
+        &__inner {
+            font-size: 14px;
+            line-height: 1
+        }
+    }
+
+    .btn-allmenu {
+        &__inner {
+            width: 50px;
+            height: 50px;
+        }
+    }
+
+    .main-kv {
+        &__content {
+            .inner {
+                padding-bottom: 60px
+            }
+
+            h2 {
+                font-size: 40px;
+                line-height: 1.25
+            }
+
+            .btn-wrap {
+                margin-top: 30px;
+            }
+        }
+    }
+
+    .label-container {
+        display: none;
+    }
+
+    .btn-default {
+        display: inline-flex;
+        width: 155px;
+        height: 44px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__text {
+            font-size: 12px;
+            line-height: 1.3;
+
+        }
+    }
+
+    .footer-temp {
+        position: relative;
+    }
+
+    .btn-top {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        cursor: pointer;
+    }
+}
