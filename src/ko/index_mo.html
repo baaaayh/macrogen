@@ -4,7 +4,57 @@
     <body>
         <div class="wrap">
             <div class="container">
-                <%- include("./include/header.html") %>
+                <header class="header">
+                    <div class="header__inner">
+                        <div class="inner">
+                            <h1 class="header__logo">
+                                <a href="/"> </a>
+                            </h1>
+                            <nav class="gnb">
+                                <div class="gnb__box gnb__bog--left">
+                                    <ul>
+                                        <li><a href="javascript:;">Healthcare</a></li>
+                                        <li><a href="javascript:;">Sequencing</a></li>
+                                        <li><a href="javascript:;">Clinical Research</a></li>
+                                    </ul>
+                                </div>
+                                <div class="gnb__box gnb__bog--right">
+                                    <ul>
+                                        <li><a href="javascript:;">Macrogen</a></li>
+                                        <li><a href="javascript:;">ESG</a></li>
+                                        <li><a href="javascript:;">IR/PR</a></li>
+                                        <li><a href="javascript:;">HR</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="snb">
+                            <div class="scroll">
+                                <div class="scroll__bg">
+                                    <span class="scroll__bar"></span>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <button type="button" class="btn btn-allmenu">
+                                        <span class="btn-allmenu__inner">All MENU</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <div class="lang">
+                                        <button type="button" class="btn btn-lang">
+                                            <span class="btn-lang__inner">EN</span>
+                                        </button>
+                                        <ul>
+                                            <li><a href="javascript:;">KR</a></li>
+                                            <li><a href="javascript:;">EN</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
                 <main class="main">
                     <section class="main-section main-section--kv" data-header-color="white">
                         <div class="main-section__inner">
@@ -12,7 +62,7 @@
                                 <div class="swiper-wrapper">
                                     <div class="main-kv__slide main-kv__slide--01 swiper-slide">
                                         <div class="main-kv__bg" data-swiper-parallax="45%">
-                                            <img src="../resources/assets/images/main/kv01_1.jpg" alt="" />
+                                            <img src="../resources/assets/images/mo/kv01_1_mo.jpg" alt="" />
                                         </div>
                                         <div class="main-kv__content">
                                             <div class="inner">
@@ -22,40 +72,8 @@
                                                         내 몸 사용설명서
                                                     </div>
                                                     <div class="main-kv__text main-kv__text--02">젠톡에서 쉽고 편하게</div>
-                                                    <div class="label-container">
-                                                        <div class="label label--01">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_01.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">Microbiome분석</span>
-                                                        </div>
-                                                        <div class="label label--02">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_02.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">TokTok한 건강관리</span>
-                                                        </div>
-                                                        <div class="label label--03">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_03.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">Digital healthcare platform</span>
-                                                        </div>
-                                                        <div class="label label--04">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_04.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">몸BTI 건강관리 플랫폼</span>
-                                                        </div>
-                                                        <div class="label label--05">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_05.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">국내 최다 129종 서비스</span>
-                                                        </div>
-                                                    </div>
                                                 </h2>
-                                                <div class="btn-wrap">
+                                                <div class="btn-wrap main-kv__text main-kv__text--03">
                                                     <a href="javascript:;" class="btn btn-default btn-default--app btn-default--google">
                                                         <span class="btn-default__text">Google Play</span>
                                                     </a>
@@ -71,47 +89,15 @@
                                     </div>
                                     <div class="main-kv__slide main-kv__slide--02 swiper-slide">
                                         <div class="main-kv__bg" data-swiper-parallax="45%">
-                                            <img src="../resources/assets/images/main/kv02.jpg" alt="" />
+                                            <img src="../resources/assets/images/mo/kv02_mo.jpg" alt="" />
                                         </div>
                                         <div class="main-kv__content">
                                             <div class="inner">
                                                 <h2>
                                                     <div class="main-kv__text main-kv__text--01">신속 정확한 유전체 분석 및 전문 컨설팅 서비스 제공</div>
                                                     <div class="main-kv__text main-kv__text--02"></div>
-                                                    <div class="label-container">
-                                                        <div class="label label--06">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_06.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">글로벌 수준의 분석 인프라</span>
-                                                        </div>
-                                                        <div class="label label--07">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_07.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">고객 맞춤형 서비스</span>
-                                                        </div>
-                                                        <div class="label label--08">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_08.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">합리적인 비용</span>
-                                                        </div>
-                                                        <div class="label label--09">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_09.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">고품질 시약과 소모품 자체 생산</span>
-                                                        </div>
-                                                        <div class="label label--10">
-                                                            <span class="label__icon">
-                                                                <img src="../resources/assets/images/main/icon_label_10.svg" alt="" />
-                                                            </span>
-                                                            <span class="label__text">최신 자동화 시스템</span>
-                                                        </div>
-                                                    </div>
                                                 </h2>
-                                                <div class="btn-wrap">
+                                                <div class="btn-wrap main-kv__text main-kv__text--03">
                                                     <a href="javascript:;" class="btn btn-default btn-default--white">
                                                         <span class="btn-default__text">View More</span>
                                                     </a>
@@ -136,73 +122,75 @@
                                     </div>
                                     <div class="section02__row section02__row--02">더 건강하고 행복한 삶을 만들어갑니다<span></span></div>
                                 </h2>
-                                <div class="toggle-box">
-                                    <div class="toggle-box__inner">
-                                        <div class="toggle-box__item toggle-box__item--01">
-                                            <div class="toggle-box__content">
-                                                <div class="toggle-box__text">
-                                                    <h3>
-                                                        <div>
-                                                            <span>Health</span>
-                                                        </div>
-                                                        <div>
-                                                            <span>Care</span>
-                                                        </div>
-                                                    </h3>
-                                                    <ul>
-                                                        <li>연구분석</li>
-                                                        <li>싱글셀</li>
-                                                    </ul>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="main-section main-section--mdf">
+                        <div class="toggle-box" data-header-color="white">
+                            <div class="toggle-box__inner">
+                                <div class="toggle-box__item toggle-box__item--01">
+                                    <div class="toggle-box__content">
+                                        <div class="toggle-box__text">
+                                            <h3>
+                                                <div>
+                                                    <span>Health</span>
                                                 </div>
-                                                <div class="btn-wrap">
-                                                    <a href="javascript:;" class="btn btn-default">
-                                                        <span class="btn-default__text">View More</span>
-                                                    </a>
+                                                <div>
+                                                    <span>Care</span>
                                                 </div>
-                                            </div>
+                                            </h3>
+                                            <ul>
+                                                <li>퍼스널 헬스케어</li>
+                                                <li>반려동물 헬스케어</li>
+                                            </ul>
                                         </div>
-                                        <div class="toggle-box__item toggle-box__item--02">
-                                            <div class="toggle-box__content">
-                                                <div class="toggle-box__text">
-                                                    <h3>
-                                                        <div>
-                                                            <span>Sequencing</span>
-                                                        </div>
-                                                    </h3>
-                                                    <ul>
-                                                        <li>연구분석</li>
-                                                        <li>싱글셀</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="btn-wrap">
-                                                    <a href="javascript:;" class="btn btn-default">
-                                                        <span class="btn-default__text">View More</span>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                        <div class="btn-wrap">
+                                            <a href="javascript:;" class="btn btn-default">
+                                                <span class="btn-default__text">View More</span>
+                                            </a>
                                         </div>
-                                        <div class="toggle-box__item toggle-box__item--03">
-                                            <div class="toggle-box__content">
-                                                <div class="toggle-box__text">
-                                                    <h3>
-                                                        <div>
-                                                            <span>Clinical</span>
-                                                        </div>
-                                                        <div>
-                                                            <span>Research</span>
-                                                        </div>
-                                                    </h3>
-                                                    <ul>
-                                                        <li>연구분석</li>
-                                                        <li>싱글셀</li>
-                                                    </ul>
+                                    </div>
+                                </div>
+                                <div class="toggle-box__item toggle-box__item--02">
+                                    <div class="toggle-box__content">
+                                        <div class="toggle-box__text">
+                                            <h3>
+                                                <div>
+                                                    <span>Sequencing</span>
                                                 </div>
-                                                <div class="btn-wrap">
-                                                    <a href="javascript:;" class="btn btn-default">
-                                                        <span class="btn-default__text">View More</span>
-                                                    </a>
+                                            </h3>
+                                            <ul>
+                                                <li>연구분석</li>
+                                                <li>싱글셀</li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-wrap">
+                                            <a href="javascript:;" class="btn btn-default">
+                                                <span class="btn-default__text">View More</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="toggle-box__item toggle-box__item--03">
+                                    <div class="toggle-box__content">
+                                        <div class="toggle-box__text">
+                                            <h3>
+                                                <div>
+                                                    <span>Clinical</span>
                                                 </div>
-                                            </div>
+                                                <div>
+                                                    <span>Research</span>
+                                                </div>
+                                            </h3>
+                                            <ul>
+                                                <li>임상분석</li>
+                                                <li>싱글셀</li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-wrap">
+                                            <a href="javascript:;" class="btn btn-default">
+                                                <span class="btn-default__text">View More</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -294,16 +282,16 @@
                                                 <div class="number-mac__slider swiper">
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide">
-                                                            <img src="../resources/assets/images/main/number01.jpg" alt="" />
+                                                            <img src="../resources/assets/images/sub/number01.jpg" alt="" />
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="../resources/assets/images/main/number02.jpg" alt="" />
+                                                            <img src="../resources/assets/images/sub/number02.jpg" alt="" />
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="../resources/assets/images/main/number01.jpg" alt="" />
+                                                            <img src="../resources/assets/images/sub/number01.jpg" alt="" />
                                                         </div>
                                                         <div class="swiper-slide">
-                                                            <img src="../resources/assets/images/main/number02.jpg" alt="" />
+                                                            <img src="../resources/assets/images/sub/number02.jpg" alt="" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -332,7 +320,7 @@
                                                             <div class="news__content">
                                                                 <div class="news__wrap">
                                                                     <div class="news__para">
-                                                                        글로벌 디지털 헬스케어 기업 마크로젠(대표 김창훈)이 인체 메커니즘에 기반한 영양제 연구 기업인 엠바이오랩(대표 권태훈)과 자사의 ‘더바이옴’ 마이크로바이옴(장내 미생물) 검사 서비스 공급 계약을 체결했다고 17일 밝혔다.ㅇㅇ
+                                                                        글로벌 디지털 헬스케어 기업 마크로젠(대표 김창훈)이 인체 메커니즘에 기반한 영양제 연구 기업인 엠바이오랩(대표 권태훈)과 자사의 ‘더바이옴’ 마이크로바이옴(장내 미생물) 검사 서비스 공급 계약을 체결했다고 17일 밝혔다.
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -583,12 +571,6 @@
         <script>
             $(function () {
                 $('img[usemap]').rwdImageMaps();
-
-                var swipers = new Swiper('.map-thumb .swiper', {
-                    spaceBetween: 0,
-                    speed: 800,
-                    grabCursor: true,
-                });
 
                 $('.btn-top').on('click', function () {
                     $('html, body').animate({ scrollTop: 0 }, 3000);

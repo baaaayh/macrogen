@@ -296,23 +296,42 @@ html::-webkit-scrollbar {
         }
 
         .btn-allmenu {
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: all 0.5s;
 
             &__inner {
 
                 &::before,
                 &::after {
-                    background-color: #fff;
+                    background-color: rgba($color: #000000, $alpha: 1);
+                    transition: all 0.5s;
                 }
             }
         }
 
         .btn-lang__inner {
-            color: #fff;
+            color: #000;
+            transition: all 0.5s;
 
             &::before {
-                background: url(../images/common/icon_lang_arrow_white.svg) center / auto no-repeat;
+                background: url(../images/common/icon_lang_arrow_black.svg) center / auto no-repeat;
+            }
+        }
+    }
+
+    &.mdf {
+        .btn-allmenu {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            transition: all 0.5s;
+
+            &__inner {
+
+                &::before,
+                &::after {
+                    background-color: rgba($color: #000000, $alpha: 1);
+                }
             }
         }
     }

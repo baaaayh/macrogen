@@ -45,6 +45,8 @@ $(function () {
     const scroll = {
         handleScroll() {
             const sections = document.querySelectorAll('[class*="-section--"]');
+            const mdfSection = document.querySelector('.sub-section--mdf');
+            const toggleSection = document.querySelector('.toggle-box');
             const header = document.querySelector('.header');
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             const scrollDirection = scrollTop > lastScrollTop ? 'down' : 'up';
@@ -52,19 +54,29 @@ $(function () {
             sections.forEach((section) => {
                 const rect = section.getBoundingClientRect();
                 const color = section.getAttribute('data-header-color');
+                // const toggleColor = toggleSection.getAttribute('data-header-color');
 
                 if (scrollDirection === 'down') {
                     // 스크롤 다운: 화면 중앙 기준점 넘어감
-                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    if (rect.top <= window.innerHeight / 8 && rect.bottom >= window.innerHeight / 8) {
                         if (color) {
                             header.classList.add(color);
+
+                            // document.querySelector('.btn-lang__inner').classList.add(color);
+                            // if (toggleColor === 'white') {
+                            //     document.querySelector('.toggle-box').classList.add('white');
+                            // }
                         } else {
-                            header.className = 'header'; // 모든 색상 클래스를 제거
+                            header.className = 'header';
+                            if (section.classList.contains('sub-section--mdf')) {
+                                header.classList.add('mdf');
+                                return;
+                            }
                         }
                     }
                 } else {
                     // 스크롤 업: 화면 중앙 기준점 넘어감
-                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                    if (rect.top <= window.innerHeight / 10 && rect.bottom >= window.innerHeight / 10) {
                         if (color) {
                             header.classList.add(color);
                         } else {

@@ -34,7 +34,7 @@ $(function () {
                 scrollTrigger: {
                     trigger: '.main-section--kv',
                     start: 'center center',
-                    end: '+=400%',
+                    end: '+=250%',
                     scrub: 1,
                     toggleClass: 'active',
                     pin: '.main-section--kv',
@@ -51,14 +51,7 @@ $(function () {
             //     bottom: 0,
             //     transform: 'translateX(-50%) scale(0.8)',
             // })
-            tl1.to(
-                '.main-kv__content .btn-wrap',
-                {
-                    opacity: 1,
-                    visibility: 'visible',
-                },
-                '<'
-            ).to('.main-section--kv', {
+            tl1.to('.main-section--kv', {
                 duration: 0.5,
             });
 
@@ -107,6 +100,7 @@ $(function () {
                     end: '+=550%',
                     scrub: 1,
                     pin: true,
+
                     onEnter: () => {
                         document.querySelector('.main-section--03').parentNode.classList.add('custom-pin-spacer');
                     },
@@ -388,7 +382,9 @@ $(function () {
 
             customCursorLinks.forEach((link) => {
                 link.addEventListener('mouseenter', () => {
-                    cursorCircle.classList.add('active');
+                    if (!link.classList.contains('footer-link')) {
+                        cursorCircle.classList.add('active');
+                    }
                 });
                 link.addEventListener('mouseleave', () => {
                     cursorCircle.classList.remove('active');
@@ -641,6 +637,7 @@ $(function () {
         },
     ];
     const map = {
+        swipers: null,
         getOfficeList(e) {
             const info = $(e.target).attr('class');
             let office;
@@ -664,8 +661,25 @@ $(function () {
                                             </div>
                                         </li>`);
             });
+            this.updateSwiper();
         },
+        initSwiper() {
+            this.swipers = new Swiper('.map-thumb .swiper', {
+                slidesPerView: 'auto',
+                spaceBetween: 0,
+                speed: 800,
+                grabCursor: true,
+            });
+        },
+        updateSwiper() {
+            if (this.swipers !== null) {
+                this.swipers.update();
+                this.swipers.slideTo(0, 0);
+            }
+        },
+
         init() {
+            this.initSwiper();
             $('.image-map area').on('click', (e) => this.getOfficeList(e));
         },
     };
