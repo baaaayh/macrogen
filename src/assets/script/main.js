@@ -36,7 +36,7 @@ $(function () {
                     start: 'center center',
                     end: '+=250%',
                     scrub: 1,
-                    toggleClass: 'active',
+                    // toggleClass: 'active',
                     pin: '.main-section--kv',
                     onUpdate: (self) => {
                         const progress = self.progress;
@@ -382,7 +382,7 @@ $(function () {
 
             customCursorLinks.forEach((link) => {
                 link.addEventListener('mouseenter', () => {
-                    if (!link.classList.contains('footer-link')) {
+                    if (!link.classList.contains('not-cursor')) {
                         cursorCircle.classList.add('active');
                     }
                 });
@@ -405,33 +405,13 @@ $(function () {
                 {
                     name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
-                    img: 'thumb_map01',
-                },
-                {
-                    name: '마크로젠 지놈센터',
-                    location: '서울, 대한민국',
                     img: 'thumb_map02',
                 },
-                {
-                    name: '마크로젠 모델동물센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map03',
-                },
-                {
-                    name: '마크로젠 대전지사',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map04',
-                },
-                {
-                    name: '마크로젠 송도 글로벌 지놈센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map05',
-                },
-                {
-                    name: '마크로젠 세종캠퍼스',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map06',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
@@ -442,11 +422,11 @@ $(function () {
                     location: '서울, 대한민국',
                     img: 'thumb_map01',
                 },
-                {
-                    name: '마크로젠 지놈센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map02',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
@@ -458,30 +438,40 @@ $(function () {
                     img: 'thumb_map01',
                 },
             ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+            ],
         },
         {
             name: 'area-mc',
             office: [
                 {
-                    name: '마크로젠 송도 글로벌 지놈센터',
+                    name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
-                    img: 'thumb_map05',
+                    img: 'thumb_map01',
                 },
-                {
-                    name: '마크로젠 세종캠퍼스',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map06',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
             name: 'area-fr',
             office: [
                 {
-                    name: '마크로젠 세종캠퍼스',
+                    name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
-                    img: 'thumb_map06',
+                    img: 'thumb_map01',
                 },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
@@ -492,17 +482,12 @@ $(function () {
                     location: '서울, 대한민국',
                     img: 'thumb_map01',
                 },
-
-                {
-                    name: '마크로젠 송도 글로벌 지놈센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map05',
-                },
-                {
-                    name: '마크로젠 세종캠퍼스',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map06',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 대전지사', location: '대전, 대한민국' },
             ],
         },
         {
@@ -511,78 +496,77 @@ $(function () {
                 {
                     name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
-                    img: 'thumb_map01',
+                    img: 'thumb_map03',
                 },
-                {
-                    name: '마크로젠 지놈센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map02',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
             name: 'area-it',
             office: [
                 {
-                    name: '마크로젠 송도 글로벌 지놈센터',
+                    name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
                     img: 'thumb_map05',
                 },
-                {
-                    name: '마크로젠 세종캠퍼스',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map06',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
             name: 'area-yt',
             office: [
                 {
-                    name: '마크로젠 강남본사',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map01',
-                },
-                {
                     name: '마크로젠 지놈센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map02',
-                },
-                {
-                    name: '마크로젠 모델동물센터',
                     location: '서울, 대한민국',
                     img: 'thumb_map03',
                 },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
             name: 'area-sg',
             office: [
                 {
-                    name: '마크로젠 대전지사',
+                    name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
-                    img: 'thumb_map04',
+                    img: 'thumb_map01',
                 },
-                {
-                    name: '마크로젠 송도 글로벌 지놈센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map05',
-                },
-                {
-                    name: '마크로젠 세종캠퍼스',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map06',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
             name: 'area-kr',
             office: [
                 {
-                    name: '마크로젠 송도 글로벌 지놈센터',
+                    name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
-                    img: 'thumb_map05',
+                    img: 'thumb_map02',
                 },
+            ],
+            officeSub: [
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 모델동물센터', location: '서울, 대한민국' },
+                { name: '마크로젠 대전지사', location: '대전, 대한민국' },
+                { name: '마크로젠 송도 글로벌 지놈센터', location: '송도, 대한민국' },
+                { name: '마크로젠 세종캠퍼스', location: '세종, 대한민국' },
             ],
         },
         {
@@ -593,21 +577,11 @@ $(function () {
                     location: '서울, 대한민국',
                     img: 'thumb_map01',
                 },
-                {
-                    name: '마크로젠 지놈센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map02',
-                },
-                {
-                    name: '마크로젠 모델동물센터',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map03',
-                },
-                {
-                    name: '마크로젠 대전지사',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map04',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
         {
@@ -619,20 +593,25 @@ $(function () {
                     img: 'thumb_map01',
                 },
             ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+            ],
         },
         {
             name: 'area-mx',
             office: [
                 {
-                    name: '마크로젠 송도 글로벌 지놈센터',
+                    name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
-                    img: 'thumb_map05',
+                    img: 'thumb_map01',
                 },
-                {
-                    name: '마크로젠 세종캠퍼스',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map06',
-                },
+            ],
+            officeSub: [
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
     ];
@@ -641,10 +620,14 @@ $(function () {
         getOfficeList(e) {
             const info = $(e.target).attr('class');
             let office;
+            let officeSub;
             nations.map((item, index) => {
                 if (item.name === info) {
                     office = item.office;
+                    officeSub = item.officeSub;
                 }
+                console.log(office);
+                console.log(officeSub);
             });
 
             $('.map-thumb ul').empty();
@@ -659,7 +642,21 @@ $(function () {
                                                     <span>${item.location}</span>
                                                 </div>
                                             </div>
-                                        </li>`);
+                                            
+                                        </li>
+                                        <ul class="sub-list"></ul>
+
+                                        `);
+            });
+            officeSub.map((item, index) => {
+                $('.map-thumb ul .sub-list').append(`<li>
+                                                <div class="map-thumb__text">
+                                                    <b>${item.name}</b>
+                                                    <span>${item.location}</span>
+                                                </div>
+                                            </li>
+
+                                        `);
             });
             this.updateSwiper();
         },
