@@ -35,6 +35,7 @@ $(function () {
                     trigger: '.main-section--kv',
                     start: 'center center',
                     end: '+=250%',
+                    end: () => (window.innerWidth <= 375 ? '+=400%' : '+=250%'),
                     scrub: 1,
                     // toggleClass: 'active',
                     pin: '.main-section--kv',
@@ -375,21 +376,26 @@ $(function () {
             const cursorCircle = document.getElementById('cursorCircle');
             const customCursorLinks = document.querySelectorAll('a');
 
-            document.addEventListener('mousemove', (e) => {
-                cursorCircle.style.top = `${e.clientY}px`;
-                cursorCircle.style.left = `${e.clientX}px`;
-            });
+            const screenWidth = window.innerWidth;
 
-            customCursorLinks.forEach((link) => {
-                link.addEventListener('mouseenter', () => {
-                    if (!link.classList.contains('not-cursor')) {
-                        cursorCircle.classList.add('active');
-                    }
+            // 화면 너비가 375px 초과인 경우에만 customCursor 함수 실행
+            if (screenWidth > 375) {
+                document.addEventListener('mousemove', (e) => {
+                    cursorCircle.style.top = `${e.clientY}px`;
+                    cursorCircle.style.left = `${e.clientX}px`;
                 });
-                link.addEventListener('mouseleave', () => {
-                    cursorCircle.classList.remove('active');
+
+                customCursorLinks.forEach((link) => {
+                    link.addEventListener('mouseenter', () => {
+                        if (!link.classList.contains('not-cursor')) {
+                            cursorCircle.classList.add('active');
+                        }
+                    });
+                    link.addEventListener('mouseleave', () => {
+                        cursorCircle.classList.remove('active');
+                    });
                 });
-            });
+            }
         },
         init() {
             this.addTransitionEndListener();
@@ -416,13 +422,7 @@ $(function () {
         },
         {
             name: 'area-be',
-            office: [
-                {
-                    name: '마크로젠 강남본사',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map01',
-                },
-            ],
+            office: [{ name: '마크로젠 대전지사', location: '대전, 대한민국', img: 'thumb_map01' }],
             officeSub: [
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
                 { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
@@ -442,6 +442,7 @@ $(function () {
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
                 { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 대전지사', location: '대전, 대한민국' },
             ],
         },
         {
@@ -492,17 +493,10 @@ $(function () {
         },
         {
             name: 'area-es',
-            office: [
-                {
-                    name: '마크로젠 강남본사',
-                    location: '서울, 대한민국',
-                    img: 'thumb_map03',
-                },
-            ],
+            office: [{ name: '마크로젠 지놈센터', location: '서울, 대한민국', img: 'thumb_map03' }],
             officeSub: [
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
                 { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
-                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
@@ -547,7 +541,7 @@ $(function () {
                 },
             ],
             officeSub: [
-                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 세종캠퍼스', location: '세종, 대한민국' },
                 { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
@@ -581,7 +575,7 @@ $(function () {
             officeSub: [
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
                 { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
-                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 대전지사', location: '대전, 대한민국' },
             ],
         },
         {
@@ -590,12 +584,12 @@ $(function () {
                 {
                     name: '마크로젠 강남본사',
                     location: '서울, 대한민국',
-                    img: 'thumb_map01',
+                    img: 'thumb_map02',
                 },
             ],
             officeSub: [
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
-                { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
+                { name: '마크로젠 대전지사', location: '대전, 대한민국' },
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
             ],
         },
@@ -611,7 +605,7 @@ $(function () {
             officeSub: [
                 { name: '마크로젠 강남본사', location: '서울, 대한민국' },
                 { name: '마크로젠 지놈센터', location: '서울, 대한민국' },
-                { name: '마크로젠 강남본사', location: '서울, 대한민국' },
+                { name: '마크로젠 송도 글로벌 지놈센터', location: '송도, 대한민국' },
             ],
         },
     ];
@@ -642,7 +636,7 @@ $(function () {
                                                     <span>${item.location}</span>
                                                 </div>
                                             </div>
-                                            
+
                                         </li>
                                         <ul class="sub-list"></ul>
 
@@ -652,7 +646,7 @@ $(function () {
                 $('.map-thumb ul .sub-list').append(`<li>
                                                 <div class="map-thumb__text">
                                                     <b>${item.name}</b>
-                                                    <span>${item.location}</span>
+                                                    <span class="blind">${item.location}</span>
                                                 </div>
                                             </li>
 

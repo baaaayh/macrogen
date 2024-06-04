@@ -3,6 +3,37 @@
         background-color: #fff;
     }
 
+    .map-thumb__text span {
+        display: none;
+    }
+
+    .main-section--07 {
+        background-image: url(../images//mo/banner_mo.jpg);
+    }
+
+
+    .section02__row {
+        letter-spacing: -0.34px;
+    }
+
+    .main-section--02 h2 .section02__row--02 {
+        margin-top: 10px;
+    }
+
+    .toggle-box__item h3 {
+        font-size: 40px;
+        line-height: 1;
+    }
+
+    .toggle-box__item.active ul {
+        margin-top: -10px;
+    }
+
+    .text-gradient {
+        padding: 0 9px 3px 10px;
+        letter-spacing: -0.34px;
+    }
+
     .scroll,
     .scroll-down {
         display: none;
@@ -269,9 +300,36 @@
     .map-thumb {
         ul {
             gap: 10px;
+            flex-direction: column;
 
             li {
-                flex-shrink: 0;
+                flex-shrink: 1;
+                width: 100%;
+            }
+
+            >ul {
+                padding: 20px 20px;
+                display: flex;
+                flex-wrap: wrap;
+                row-gap: 10px;
+                column-gap: 0px;
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-direction: row;
+
+                li {
+                    width: calc((100% - 0px) / 2);
+
+                    b {
+                        overflow: hidden;
+                        color: #000;
+                        font-family: 'SUIT';
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: 1
+                    }
+                }
             }
         }
     }
@@ -313,7 +371,8 @@
     .main-kv {
         &__content {
             .inner {
-                padding-bottom: 60px
+                flex-direction: column;
+                justify-content: flex-end;
             }
 
             h2 {
@@ -324,6 +383,10 @@
             .btn-wrap {
                 margin-top: 30px;
             }
+        }
+
+        &__img {
+            margin-top: 65px;
         }
 
         &__text {
