@@ -99,6 +99,7 @@ $(function () {
 
             lastScrollTop = scrollTop;
         },
+
         init() {
             $(window).on('scroll', this.handleScroll);
             $(window).on('load', this.handleScroll);

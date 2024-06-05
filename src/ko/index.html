@@ -80,17 +80,29 @@
                                 <h2>
                                     <div class="section02__row section02__row--01">
                                         세계적 수준의
-                                        <div class="text-gradient">서비스</div>
+                                        <div class="text-gradient text-gradient--01">서비스</div>
                                         를 제공하여<span></span>
                                     </div>
                                     <div class="section02__row section02__row--02">
                                         더
-                                        <div class="text-gradient">건강</div>
+                                        <div class="text-gradient text-gradient--02">건강</div>
                                         하고
-                                        <div class="text-gradient">행복</div>
+                                        <div class="text-gradient text-gradient--03">행복</div>
                                         한 삶을 만들어갑니다<span></span>
                                     </div>
                                 </h2>
+                                <script>
+                                    $(function () {
+                                        $(document).on('keydown', function (event) {
+                                            if (event.key === 'Enter') {
+                                                $('.main-section--02 .text-gradient').addClass('active');
+                                            }
+                                            if (event.key === 'End') {
+                                                $('.main-section--03 .text-gradient').addClass('active');
+                                            }
+                                        });
+                                    });
+                                </script>
                                 <div class="toggle-box">
                                     <div class="toggle-box__inner">
                                         <div class="toggle-box__item toggle-box__item--01">
@@ -178,12 +190,12 @@
                                 <div class="parallax__block parallax__block--top">
                                     <div class="parallax__text--01">
                                         <div class="parallax__row parallax__row--01">
-                                            <div class="text-gradient">인류</div>
+                                            <div class="text-gradient text-gradient--04">인류</div>
                                             의 건강
                                         </div>
                                         <div class="parallax__row parallax__row--02">
                                             증진을 위해
-                                            <div class="text-gradient">노력</div>
+                                            <div class="text-gradient text-gradient--05">노력</div>
                                             하는
                                         </div>
                                         <div class="parallax__row parallax__row--03">마크로젠</div>
@@ -192,12 +204,12 @@
                                 <div class="parallax__block parallax__block--bottom">
                                     <div class="parallax__text--01">
                                         <div class="parallax__row parallax__row--01">
-                                            <div class="text-gradient">인류</div>
+                                            <div class="text-gradient text-gradient--04">인류</div>
                                             의 건강
                                         </div>
                                         <div class="parallax__row parallax__row--02">
                                             증진을 위해
-                                            <div class="text-gradient">노력</div>
+                                            <div class="text-gradient text-gradient--05">노력</div>
                                             하는
                                         </div>
                                         <div class="parallax__row parallax__row--03">마크로젠</div>

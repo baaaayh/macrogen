@@ -76,7 +76,7 @@
                                 <div class="inner">
                                     <div class="lnb">
                                         <span>건강관리 플랫폼, 젠톡</span>
-                                        <ul>
+                                        <ul class="sticky-list">
                                             <li class="active"><a href="javascript:;" class="btn">젠톡소개</a></li>
                                             <li><a href="javascript:;" class="btn">주요특징</a></li>
                                             <li><a href="javascript:;" class="btn">서비스 이용과정</a></li>
@@ -195,6 +195,9 @@
                                 </div>
                             </div>
                         </section>
+                        <!-- <div class="text text1" id="text">이 텍스트의 색상이 변합니다.</div>
+                        <div class="text text2" id="text">이 텍스트의 색상이 변합니다.</div>
+                        <div class="text text3" id="text">이 텍스트의 색상이 변합니다.</div> -->
                     </div>
                 </div>
                 <div class="sub-section sub-section--mdf"><%- include("./include/sub_footer.html") %></div>
@@ -202,55 +205,40 @@
         </div>
         <script>
             $(function () {
-                // const allSection = $('.sub-sticky');
-                // let offsets = [];
+                let offset = [];
+                let stickyOffsetTop = $('.sub-sticky');
+                // let stickyOffsetTop = $('.sub-section ');
+                let stickyList = $('.sticky-list li');
 
-                // allSection.each(function (index) {
-                //     offsets.push($(this).offset().top);
-                // });
+                stickyOffsetTop.each(function (index, item) {
+                    offset.push($(this).offset().top);
+                    console.log(item);
+                });
 
-                // $(window).on('scroll', function () {
-                //     console.log($(window).scrollTop());
-                // });
-
-                $('.lnb ul li').on('click', function () {
+                stickyList.on('click', function () {
+                    let idx = $(this).index();
                     $(this).addClass('active').siblings().removeClass('active');
+                    $('html, body').animate({ scrollTop: offset[idx] + 1 }, 500);
                 });
 
-                // $('.lnb ul li').on('click', function () {
-                //     const index = $(this).index();
-                //     $('html, body').animate(
-                //         {
-                //             scrollTop: offsets[index] + 4205,
-                //         },
-                //         500
-                //     );
-                //     $(this).addClass('active').siblings().removeClass('active');
+                $(window).on('scroll', function () {
+                    let st = $(window).scrollTop();
+                    let currentIndex = 0;
+                    for (let i = offset.length - 1; i >= 0; i--) {
+                        if (st >= offset[i] - 200) {
+                            currentIndex = i;
+                            break;
+                        }
+                    }
+                    stickyList.eq(currentIndex).addClass('active').siblings().removeClass('active');
+                    console.log(currentIndex);
+                });
+
+                // $(document).on('keydown', function (event) {
+                //     if (event.key === 'Enter') {
+                //         $('.text').addClass('active');
+                //     }
                 // });
-
-                // console.log(offsets);
-
-                gsap.registerPlugin(ScrollTrigger);
-                const tl1 = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: '.sub-section--02',
-                        start: 'center center',
-                        end: '+=400%',
-                        scrub: true,
-                        pin: true,
-                    },
-                });
-                tl1.to('.fullscreen__row--01', {
-                    x: 0,
-                    opacity: 1,
-                })
-                    .to('.fullscreen__row--02', {
-                        x: 0,
-                        opacity: 1,
-                    })
-                    .to('.fullscreen p', {
-                        opacity: 1,
-                    });
             });
         </script>
     </body>

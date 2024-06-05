@@ -135,7 +135,8 @@
                                         <div class="text-gradient">건강</div>
                                         하고
                                         <div class="text-gradient">행복</div>
-                                        한 삶을 만들어갑니다<span></span>
+                                        한<br />
+                                        삶을 만들어갑니다<span></span>
                                     </div>
                                 </h2>
                             </div>
@@ -568,6 +569,22 @@
 
                 $('.btn-top').on('click', function () {
                     $('html, body').animate({ scrollTop: 0 }, 3000);
+                });
+
+                let lastScrollTop = 0;
+                $(window).on('scroll', function () {
+                    let scrollTop = $(window).scrollTop();
+                    if (scrollTop > lastScrollTop) {
+                        $('.header').css('top', -80 + 'px');
+                        $('.header .snb').css('top', -80 + 'px');
+                    } else {
+                        $('.header').css('top', '0');
+                        $('.header .snb').css('top', '0');
+                    }
+                    lastScrollTop = scrollTop;
+
+                    console.log('lastScrollTop', lastScrollTop);
+                    console.log('scrollTop', scrollTop);
                 });
             });
         </script>

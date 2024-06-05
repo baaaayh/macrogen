@@ -32,6 +32,7 @@
     .text-gradient {
         padding: 0 9px 3px 10px;
         letter-spacing: -0.34px;
+        margin-right: -10px;
     }
 
     .scroll,
@@ -48,6 +49,10 @@
     .header {
         position: fixed;
         transition: all 0.5s;
+
+        .snb {
+            transition: all 0.5s;
+        }
 
         &__logo {
             top: 15px;
@@ -387,6 +392,7 @@
 
         &__img {
             margin-top: 65px;
+            margin-left: 60px;
         }
 
         &__text {
