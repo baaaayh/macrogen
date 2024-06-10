@@ -48,10 +48,6 @@ $(function () {
                 },
             });
 
-            // tl1.to('.main-kv__mobile', {
-            //     bottom: 0,
-            //     transform: 'translateX(-50%) scale(0.8)',
-            // })
             tl1.to('.main-section--kv', {
                 duration: 0.5,
             });
@@ -119,14 +115,50 @@ $(function () {
                 },
             });
 
-            const tl5 = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.toggle-box',
-                    start: () => (window.innerWidth <= 375 ? 'top-=20% top' : 'top bottom'),
-                    end: () => (window.innerWidth <= 375 ? '+=240%' : '+=200%'),
-                    toggleClass: 'active',
-                },
-            });
+            // const isSmallScreen = window.innerWidth <= 375;
+
+            // const tl5 = gsap.timeline({
+            //     scrollTrigger: {
+            //         trigger: '.toggle-box',
+            //         start: () => (window.innerWidth <= 375 ? 'top-=20% top' : 'top+=2% bottom'),
+            //         end: () => (window.innerWidth <= 375 ? '+=240%' : '+=240%'),
+            //         onEnter: () => {
+            //             if (!isSmallScreen) {
+            //                 gsap.to('.toggle-box', { y: -1000, opacity: 1, duration: 0.8 });
+            //             }
+            //         },
+            //         onLeave: () => {
+            //             if (!isSmallScreen) {
+            //                 gsap.to('.toggle-box', { y: 0, opacity: 0, duration: 0.8 });
+            //             }
+            //         },
+            //         onEnterBack: () => {
+            //             if (!isSmallScreen) {
+            //                 gsap.to('.toggle-box', { y: -1000, opacity: 1, duration: 0.8 });
+            //             }
+            //         },
+            //         onLeaveBack: () => {
+            //             if (!isSmallScreen) {
+            //                 gsap.to('.toggle-box', { y: 0, opacity: 0, duration: 0.8 });
+            //             }
+            //         },
+            //         pin: !isSmallScreen, // 작은 화면일 때만 pin 옵션을 활성화합니다.
+            //         // pinSpacing: false,
+            //     },
+            // });
+
+            if (window.innerWidth >= 375) {
+                let tl5 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.toggle-fixed',
+                        pin: true,
+                        scrub: 1,
+                        start: 'top top',
+                        end: '+=30%',
+                        ease: 'power3.inOut',
+                    },
+                });
+            }
 
             const newsList = gsap.utils.toArray('.news__container ul li');
 
@@ -178,6 +210,14 @@ $(function () {
                     },
                     '<'
                 )
+                .to('.parallax__block', {
+                    backgroundColor: 'transparent',
+                    duration: 1,
+                    onComplete: () => {
+                        // Ensure the background is fully transparent after animation
+                        gsap.set('.parallax__block', { backgroundColor: 'transparent' });
+                    },
+                })
                 .to(
                     '.parallax__block--top .parallax__text--01',
                     {

@@ -87,6 +87,7 @@
 
         .sub-section__bottom {
             margin-top: 120px;
+            padding: 40px 0;
         }
     }
 }
@@ -515,7 +516,7 @@ footer {
             line-height: 1;
             transform: translateY(100px);
             transition: all 0.46s ease;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 1);
         }
 
         p {
@@ -525,8 +526,10 @@ footer {
             font-size: 18px;
             font-weight: 300;
             line-height: 1.33;
-            transition: all 0.46s ease;
+            transition: opacity 0.46s ease;
             z-index: 2;
+            // width: 305px;
+            word-break: keep-all;
         }
     }
 }
@@ -575,5 +578,35 @@ footer {
 
     &::before {
         transition-delay: 3s;
+    }
+}
+
+.swiper {
+    &--05 {
+        .swiper-wrapper {
+            padding: 40px 20px;
+            width: 527px;
+        }
+
+        li {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0px 4px 40px 0px rgba(4, 12, 29, 0.12);
+
+            img {
+                width: 527px;
+            }
+        }
+    }
+}
+
+.marquee {
+    display: flex;
+    gap: 30px;
+
+    >div {
+        width: 527px;
+        border-radius: 20px;
+        box-shadow: 0px 4px 40px 0px rgba(4, 12, 29, 0.12);
     }
 }

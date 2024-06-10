@@ -163,7 +163,6 @@
 
 
     .toggle-box {
-        margin: 0 -15px;
 
         &__inner {
             flex-direction: column;
@@ -241,6 +240,10 @@
             img {
                 width: 350px;
             }
+        }
+
+        &__list {
+            margin-top: 10px;
         }
     }
 

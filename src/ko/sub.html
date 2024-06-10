@@ -191,13 +191,25 @@
                                     <h2>젠톡 사용후기</h2>
                                 </div>
                                 <div class="sub-section__bottom">
-                                    <img src="../resources/assets/images/sub/section07_01_temp.png" alt="" />
+                                    <div class="swiper--05 marquee">
+                                        <!-- <ul class="swiper-wrapper"> -->
+                                        <div class="swiper-slide">
+                                            <img src="../resources/assets/images/sub/slide01.png" alt="" style="height: 423px" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="../resources/assets/images/sub/slide02.png" alt="" style="height: 457px" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="../resources/assets/images/sub/slide03.png" alt="" style="height: 451px" />
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="../resources/assets/images/sub/slide04.png" alt="" style="height: 479px" />
+                                        </div>
+                                        <!-- </ul> -->
+                                    </div>
                                 </div>
                             </div>
                         </section>
-                        <!-- <div class="text text1" id="text">이 텍스트의 색상이 변합니다.</div>
-                        <div class="text text2" id="text">이 텍스트의 색상이 변합니다.</div>
-                        <div class="text text3" id="text">이 텍스트의 색상이 변합니다.</div> -->
                     </div>
                 </div>
                 <div class="sub-section sub-section--mdf"><%- include("./include/sub_footer.html") %></div>
@@ -234,12 +246,39 @@
                     console.log(currentIndex);
                 });
 
-                // $(document).on('keydown', function (event) {
-                //     if (event.key === 'Enter') {
-                //         $('.text').addClass('active');
-                //     }
+                gsap.registerPlugin(ScrollTrigger);
+
+                let tl5 = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: '.sub-section--05',
+                        pin: true,
+                        scrub: 1,
+                        start: 'top top',
+                        end: '+=30%',
+                        ease: 'power3.inOut',
+                    },
+                });
+
+                // let swiper = new Swiper('.swiper', {
+                //     slidesPerView: 3.3,
+                //     spaceBetween: 40,
+                //     speed: 800,
+                //     grabCursor: true,
                 // });
             });
+        </script>
+        <script src="../../resources/library/marquee/marquee.js"></script>
+        <script>
+            function marquee() {
+                const marquee = new SimpleMarquee('.marquee', {
+                    autoplay: true,
+                    speed: 2,
+                    pauseOnMouseEnter: true,
+                    duplicated: true,
+                    direction: 'left',
+                });
+            }
+            marquee();
         </script>
     </body>
 </html>
