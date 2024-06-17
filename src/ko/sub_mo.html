@@ -441,6 +441,22 @@
                 </div>
             </div>
         </div>
+        <div class="fixed-button">
+            <div class="down-area">
+                <ul>
+                    <li>
+                        <a href="javascript:;" class="btn btn-default btn-default--app btn-default--google">
+                            <span class="btn-default__text">Google Play</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="btn btn-default btn-default--app btn-default--apple">
+                            <span class="btn-default__text">App Store</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
         <script src="../../resources/library/marquee/marquee.js"></script>
         <script>
@@ -510,7 +526,17 @@
                         }
                     }
                     stickyList.eq(currentIndex).addClass('active').siblings().removeClass('active');
+
+                    let ft = $('.footer-temp').offset().top;
+                    if ($(window).scrollTop() + $(window).innerHeight() >= ft) {
+                        $('.fixed-button').addClass('hide');
+                    } else if ($(window).scrollTop() <= 0) {
+                        $('.fixed-button').addClass('hide');
+                    } else {
+                        $('.fixed-button').removeClass('hide');
+                    }
                 });
+                $('.fixed-button').addClass('hide');
             });
         </script>
     </body>
