@@ -1,6 +1,6 @@
 $(function () {
     AOS.init();
-
+    window.lenis = null;
     const mouse = {
         scrollHeight() {
             const docH = document.documentElement.scrollHeight;
@@ -19,8 +19,7 @@ $(function () {
             $('.scroll__bar').css('top', pos + '%');
         },
         smoothScroll() {
-            const lenis = new Lenis();
-            lenis.on('scroll', function () {});
+            lenis = new Lenis();
             function raf(time) {
                 lenis.raf(time * 0.5);
                 requestAnimationFrame(raf);
@@ -101,7 +100,7 @@ $(function () {
         },
 
         init() {
-            $(window).on('scroll', this.handleScroll);
+            $(window).on('scroll touchmove', this.handleScroll);
             $(window).on('load', this.handleScroll);
         },
     };

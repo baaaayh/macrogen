@@ -80,7 +80,7 @@
                                             <li class="active"><a href="javascript:;" class="btn">젠톡소개</a></li>
                                             <li><a href="javascript:;" class="btn">주요특징</a></li>
                                             <li><a href="javascript:;" class="btn">서비스 이용과정</a></li>
-                                            <li><a href="javascript:;" class="btn">활용사례</a></li>
+                                            <li><a href="javascript:;" class="btn">사용후기</a></li>
                                         </ul>
                                     </div>
                                     <div class="down-area">
@@ -130,7 +130,15 @@
                                     <img src="../resources/assets/images/sub/section04_01_temp.png" alt="" />
                                 </div>
                                 <div class="sub-section__bottom">
-                                    <img src="../resources/assets/images/sub/section04_02_temp.jpg" alt="" />
+                                    <div class="sub-section__gcard">
+                                        <img src="../resources/assets/images/sub/section04_02_temp.jpg" alt="" />
+                                    </div>
+                                    <div class="sub-section__gcard">
+                                        <img src="../resources/assets/images/sub/section04_02_temp_02.jpg" alt="" />
+                                    </div>
+                                    <div class="sub-section__gcard">
+                                        <img src="../resources/assets/images/sub/section04_02_temp_03.jpg" alt="" />
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -215,37 +223,22 @@
                 <div class="sub-section sub-section--mdf"><%- include("./include/sub_footer.html") %></div>
             </div>
         </div>
+        <script src="../../resources/library/marquee/marquee.js"></script>
+        <script>
+            function marquee() {
+                const marquee = new SimpleMarquee('.marquee', {
+                    autoplay: true,
+                    speed: 2,
+                    pauseOnMouseEnter: true,
+                    duplicated: true,
+                    direction: 'left',
+                });
+            }
+            marquee();
+        </script>
+
         <script>
             $(function () {
-                let offset = [];
-                let stickyOffsetTop = $('.sub-sticky');
-                // let stickyOffsetTop = $('.sub-section ');
-                let stickyList = $('.sticky-list li');
-
-                stickyOffsetTop.each(function (index, item) {
-                    offset.push($(this).offset().top);
-                    console.log(item);
-                });
-
-                stickyList.on('click', function () {
-                    let idx = $(this).index();
-                    $(this).addClass('active').siblings().removeClass('active');
-                    $('html, body').animate({ scrollTop: offset[idx] + 1 }, 500);
-                });
-
-                $(window).on('scroll', function () {
-                    let st = $(window).scrollTop();
-                    let currentIndex = 0;
-                    for (let i = offset.length - 1; i >= 0; i--) {
-                        if (st >= offset[i] - 200) {
-                            currentIndex = i;
-                            break;
-                        }
-                    }
-                    stickyList.eq(currentIndex).addClass('active').siblings().removeClass('active');
-                    console.log(currentIndex);
-                });
-
                 gsap.registerPlugin(ScrollTrigger);
 
                 let tl5 = gsap.timeline({
@@ -265,20 +258,41 @@
                 //     speed: 800,
                 //     grabCursor: true,
                 // });
-            });
-        </script>
-        <script src="../../resources/library/marquee/marquee.js"></script>
-        <script>
-            function marquee() {
-                const marquee = new SimpleMarquee('.marquee', {
-                    autoplay: true,
-                    speed: 2,
-                    pauseOnMouseEnter: true,
-                    duplicated: true,
-                    direction: 'left',
+
+                let stickyList = $('.sticky-list li');
+
+                function updateOffsets() {
+                    let offset = [];
+                    let stickyOffsetTop = $('.sub-sticky');
+                    stickyOffsetTop.each(function (index, item) {
+                        offset.push($(this).offset().top);
+                    });
+                    return offset;
+                }
+
+                let offset = updateOffsets();
+
+                stickyList.on('click', function () {
+                    let idx = $(this).index();
+                    $(this).addClass('active').siblings().removeClass('active');
+                    lenis.stop();
+                    $('html, body').animate({ scrollTop: offset[idx] + 1 }, 500);
+                    lenis.start();
                 });
-            }
-            marquee();
+
+                $(window).on('scroll touchmove', function () {
+                    offset = updateOffsets(); // 스크롤할 때마다 오프셋 값 업데이트
+                    let st = $(window).scrollTop();
+                    let currentIndex = 0;
+                    for (let i = offset.length - 1; i >= 0; i--) {
+                        if (st >= offset[i] - 200) {
+                            currentIndex = i;
+                            break;
+                        }
+                    }
+                    stickyList.eq(currentIndex).addClass('active').siblings().removeClass('active');
+                });
+            });
         </script>
     </body>
 </html>
