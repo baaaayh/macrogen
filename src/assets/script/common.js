@@ -105,6 +105,24 @@ $(function () {
         },
     };
 
+    const header = {
+        hideHeader() {
+            if ($('.hide-area').length > 0) {
+                let st = $(window).scrollTop();
+                let firstSection = $('.hide-area').offset().top - 100;
+                if (st >= firstSection) {
+                    $('.header').addClass('hide');
+                } else {
+                    $('.header').removeClass('hide');
+                }
+            }
+        },
+        init() {
+            $(window).on('wheel scroll', this.hideHeader);
+        },
+    };
+
     mouse.init();
     scroll.init();
+    header.init();
 });

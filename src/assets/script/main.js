@@ -34,7 +34,7 @@ $(function () {
                 scrollTrigger: {
                     trigger: '.main-section--kv',
                     start: 'center center',
-                    end: '+=250%',
+                    // end: '+=250%',
                     end: () => (window.innerWidth <= 375 ? '+=400%' : '+=250%'),
                     scrub: 1,
                     // toggleClass: 'active',
@@ -42,7 +42,8 @@ $(function () {
                     onUpdate: (self) => {
                         const progress = self.progress;
                         const totalSlides = mainKV.slides.length;
-                        const slideIndex = Math.round(progress * (totalSlides - 1));
+                        console.log(progress);
+                        const slideIndex = Math.round(progress * 3 * (totalSlides - 1));
                         mainKV.slideTo(slideIndex, 1000);
                     },
                 },
@@ -56,7 +57,7 @@ $(function () {
                 scrollTrigger: {
                     trigger: '.main-section--02 h2',
                     start: 'center center',
-                    end: '+=400%',
+                    end: '+=600%',
                     scrub: 1,
                     pin: '.main-section--02 h2',
                 },
@@ -66,6 +67,7 @@ $(function () {
                 width: '0%',
                 duration: 80,
             })
+
                 .to(
                     '.section02__row--02 span',
                     {
@@ -75,17 +77,44 @@ $(function () {
                     },
                     '<'
                 )
+                .to('.text-gradient--01', {
+                    color: '#fff',
+                })
+                .to('.text-gradient--01 > div', {
+                    width: '100%',
+                    borderRadius: '10px',
+                    duration: 40,
+                })
+                .to('.text-gradient--02', {
+                    color: '#fff',
+                })
+                .to('.text-gradient--02 > div', {
+                    width: '100%',
+                    borderRadius: '10px',
+                    duration: 40,
+                })
+                .to('.text-gradient--03', {
+                    color: '#fff',
+                })
+                .to('.text-gradient--03 > div', {
+                    width: '100%',
+                    borderRadius: '10px',
+                    duration: 40,
+                })
+                .to('.text-gradient--03 > div', {
+                    duration: 80,
+                })
                 .to('.section02__row--01', {
                     opacity: 0,
                     filter: 'blur(5px)',
-                    duration: 30,
+                    duration: 60,
                 })
                 .to(
                     '.section02__row--02',
                     {
                         opacity: 0,
                         filter: 'blur(5px)',
-                        duration: 30,
+                        duration: 60,
                     },
                     '<'
                 );
@@ -94,7 +123,7 @@ $(function () {
                 scrollTrigger: {
                     trigger: '.main-section--03',
                     start: 'center center',
-                    end: '+=550%',
+                    end: '+=750%',
                     scrub: 1,
                     pin: true,
 
@@ -175,14 +204,14 @@ $(function () {
             tl3.to('.parallax__row--01', {
                 opacity: 1,
                 x: '0',
-                duration: 6,
+                duration: 25,
             })
                 .to(
                     '.parallax__row--02',
                     {
                         opacity: 1,
                         x: '0',
-                        duration: 6,
+                        duration: 25,
                     },
                     '<'
                 )
@@ -191,22 +220,54 @@ $(function () {
                     {
                         opacity: 1,
                         x: '0',
-                        duration: 6,
+                        duration: 25,
                     },
                     '<'
                 )
                 .to('.parallax__row', {
                     duration: 4,
                 })
+                .to('.text-gradient--04', {
+                    color: '#fff',
+                })
+                .to(
+                    '.text-gradient--04 > div',
+                    {
+                        width: '100%',
+                        borderRadius: '10px',
+                        duration: 20,
+                    },
+                    '<'
+                )
+                .to('.text-gradient--05', {
+                    color: '#fff',
+                })
+                .to(
+                    '.text-gradient--05 > div',
+                    {
+                        width: '100%',
+                        borderRadius: '10px',
+                        duration: 20,
+                    },
+                    '<'
+                )
+                .to('.text-gradient--05', {
+                    duration: 30,
+                })
+                .to('.parallax__text--01', {
+                    opacity: 0,
+                    filter: 'blur(5px)',
+                    duration: 30,
+                })
                 .to('.parallax__block--top', {
                     y: '-50vh',
-                    duration: 8,
+                    duration: 30,
                 })
                 .to(
                     '.parallax__block--bottom',
                     {
                         y: '50vh',
-                        duration: 8,
+                        duration: 30,
                     },
                     '<'
                 )
@@ -219,33 +280,17 @@ $(function () {
                     },
                 })
                 .to(
-                    '.parallax__block--top .parallax__text--01',
-                    {
-                        top: 'calc(100% + 100px)',
-                        duration: 5,
-                    },
-                    '<'
-                )
-                .to(
-                    '.parallax__block--bottom .parallax__text--01',
-                    {
-                        bottom: 'calc(100% + 100px)',
-                        duration: 5,
-                    },
-                    '<'
-                )
-                .to(
                     '.parallax__content',
                     {
                         top: '50%',
                         transform: 'translate(-50%, -50%)',
                         opacity: 1,
-                        duration: 10,
+                        duration: 50,
                     },
                     '<'
                 )
                 .to('.main-section--03', {
-                    duration: 2,
+                    duration: 20,
                 });
         },
         // mainKvInit() {
@@ -289,7 +334,28 @@ $(function () {
                 $(this).parents('.number-mac__item').addClass('active').siblings('.number-mac__item').removeClass('active');
                 let idx = $(this).parents('li').index();
                 numberSlider.slideTo(idx);
+                // if ($(window).innerWidth() > 375) {
+                // }
             });
+
+            // if ($(window).innerWidth() <= 375) {
+            //     gsap.registerPlugin(ScrollTrigger);
+            //     let tl1 = gsap.timeline({
+            //         scrollTrigger: {
+            //             trigger: '.main-section--08',
+            //             start: 'center-=2.7% center',
+            //             end: '+=400%',
+            //             scrub: true,
+            //             pin: true,
+            //             onUpdate: (self) => {
+            //                 let progress = self.progress.toFixed(2); // 현재 진행 상황 (0.00 - 1.00)
+            //                 let slideIndex = Math.floor(progress * 4); // 0, 1, 2, 3 (총 4구간)
+            //                 $('.number-mac__item').eq(slideIndex).addClass('active').siblings('.number-mac__item').removeClass('active');
+            //                 numberSlider.slideTo(slideIndex); // 해당 슬라이드로 이동
+            //             },
+            //         },
+            //     });
+            // }
         },
         toggleBox() {
             if ($(window).width() <= 375) {

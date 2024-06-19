@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </section> -->
-                    <div class="sticky-area">
+                    <div class="sticky-area hide-area">
                         <nav class="section-nav">
                             <div class="section-nav__inner">
                                 <div class="inner">
@@ -82,6 +82,7 @@
                                             <li><a href="javascript:;" class="btn">서비스 이용과정</a></li>
                                             <li><a href="javascript:;" class="btn">사용후기</a></li>
                                         </ul>
+                                        <span class="lnb__bar"></span>
                                     </div>
                                     <div class="down-area">
                                         <ul>
@@ -220,7 +221,7 @@
                         </section>
                     </div>
                 </div>
-                <div class="sub-section sub-section--mdf"><%- include("./include/sub_footer.html") %></div>
+                <div class="sub-section sub-section--mdf footer-temp"><%- include("./include/sub_footer.html") %></div>
             </div>
         </div>
         <script src="../../resources/library/marquee/marquee.js"></script>
@@ -271,13 +272,21 @@
                 }
 
                 let offset = updateOffsets();
+                function transitionBar(idx) {
+                    let xPos = stickyList.eq(idx).offset().left;
+                    console.log(xPos);
+                    let liWidth = stickyList.eq(idx).innerWidth();
 
+                    $('.lnb__bar').css({ left: xPos, width: liWidth });
+                }
                 stickyList.on('click', function () {
                     let idx = $(this).index();
                     $(this).addClass('active').siblings().removeClass('active');
                     lenis.stop();
                     $('html, body').animate({ scrollTop: offset[idx] + 1 }, 500);
                     lenis.start();
+
+                    transitionBar(idx);
                 });
 
                 $(window).on('scroll touchmove', function () {
@@ -291,6 +300,10 @@
                         }
                     }
                     stickyList.eq(currentIndex).addClass('active').siblings().removeClass('active');
+
+                    let ft = $('.footer-temp').offset().top;
+
+                    transitionBar(currentIndex);
                 });
             });
         </script>

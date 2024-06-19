@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </section> -->
-                    <div class="sticky-area">
+                    <div class="sticky-area hide-area">
                         <nav class="section-nav">
                             <div class="section-nav__inner">
                                 <div class="inner">
@@ -131,6 +131,7 @@
                                             <li><a href="javascript:;" class="btn">서비스 이용과정</a></li>
                                             <li><a href="javascript:;" class="btn">사용후기</a></li>
                                         </ul>
+                                        <span class="lnb__bar"></span>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +190,7 @@
                                 <div class="sub-section__bottom mt50">
                                     <div class="sub-section__gcard">
                                         <div class="gcard">
-                                            <div class="gcard__item">
+                                            <div class="gcard__item gcard__item--01">
                                                 <div class="gcard__inner">
                                                     <div class="gcard__title">유전자 검사</div>
                                                     <p>비만, 탈모, 체중감량효과, 혈당, 수면습관 등 국내 최다 129종 항목에 대한 유전자검사를 제공합니다. 나의 타고난 유전자 특성과 내게 필요한 건강관리 팁을 결과카드로 쉽고 재미있게 확인할 수 있습니다.</p>
@@ -230,7 +231,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="gcard__item">
+                                            <div class="gcard__item gcard__item--02">
                                                 <div class="gcard__inner">
                                                     <div class="gcard__title">더바이옴</div>
                                                     <p>제2의 유전체라 불리는 마이크로바이옴 분석 서비스입니다. 식습관, 운동 및 수면 습관, 생활 환경, 스트레스 강도 등에 따라 지속적으로 변화하는 마이크로바이옴을 분석하여 현재 건강 상태를 모니터링함으로써 보다 체계적인 건강관리를 할 수 있습니다.</p>
@@ -270,7 +271,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="gcard__item">
+                                            <div class="gcard__item gcard__item--03">
                                                 <div class="gcard__inner">
                                                     <div class="gcard__title">반려동물<br />유전자 검사</div>
                                                     <p>
@@ -298,6 +299,24 @@
                                 </div>
                             </div>
                         </section>
+                        <script>
+                            $(function () {
+                                gsap.registerPlugin(ScrollTrigger);
+
+                                let panels = gsap.utils.toArray('.gcard__item');
+
+                                panels.forEach((item, index) => {
+                                    ScrollTrigger.create({
+                                        trigger: item,
+                                        start: 'top top',
+                                        endTrigger: index < panels.length - 1 ? panels[index + 1] : null,
+                                        pin: true,
+                                        pinSpacing: false,
+                                        // markers: true,
+                                    });
+                                });
+                            });
+                        </script>
                         <script>
                             $(function () {
                                 document.querySelectorAll('.gcard__slider').forEach((item, index) => {
@@ -441,7 +460,8 @@
                 </div>
             </div>
         </div>
-        <div class="fixed-button">
+        <div class="fixed-button hide">
+            <button type="button">닫기</button>
             <div class="down-area">
                 <ul>
                     <li>
@@ -506,13 +526,24 @@
                 }
 
                 let offset = updateOffsets();
+                function transitionBar(idx) {
+                    let xPos = stickyList.eq(idx).offset().left;
+                    let liWidth = stickyList.eq(idx).innerWidth();
 
+                    $('.lnb__bar').css({ left: xPos, width: liWidth });
+                }
                 stickyList.on('click', function () {
                     let idx = $(this).index();
                     $(this).addClass('active').siblings().removeClass('active');
                     lenis.stop();
                     $('html, body').animate({ scrollTop: offset[idx] + 1 }, 500);
                     lenis.start();
+
+                    transitionBar(idx);
+                });
+
+                $('.fixed-button > button').on('click', function () {
+                    $(this).parents('.fixed-button').addClass('hide-important');
                 });
 
                 $(window).on('scroll touchmove', function () {
@@ -535,8 +566,9 @@
                     } else {
                         $('.fixed-button').removeClass('hide');
                     }
+
+                    transitionBar(currentIndex);
                 });
-                $('.fixed-button').addClass('hide');
             });
         </script>
     </body>

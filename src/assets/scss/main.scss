@@ -403,7 +403,7 @@
         border-radius: 5px;
         background: linear-gradient(90deg, #8CD05F 0%, #56A1DE 77.25%);
         transition: width 1s;
-        z-index: -1;
+        
     }
 
     &.active {
@@ -414,38 +414,48 @@
         }
     }
 
-
-    &--02 {
-        transition-delay: 0.5s;
-
-        &:before {
-            transition-delay: 0.5s;
-        }
+    > div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(90deg, #8CD05F 0%, #56A1DE 77.25%);
     }
 
-    &--03 {
-        transition-delay: 1s;
 
-        &:before {
-            transition-delay: 1s;
-        }
-    }
+    // &--02 {
+    //     transition-delay: 0.5s;
 
-    &--04 {
-        transition-delay: 0.5s;
+    //     &:before {
+    //         transition-delay: 0.5s;
+    //     }
+    // }
 
-        &:before {
-            transition-delay: 0.5s;
-        }
-    }
+    // &--03 {
+    //     transition-delay: 1s;
 
-    &--05 {
-        transition-delay: 1s;
+    //     &:before {
+    //         transition-delay: 1s;
+    //     }
+    // }
 
-        &:before {
-            transition-delay: 1s;
-        }
-    }
+    // &--04 {
+    //     transition-delay: 0.5s;
+
+    //     &:before {
+    //         transition-delay: 0.5s;
+    //     }
+    // }
+
+    // &--05 {
+    //     transition-delay: 1s;
+
+    //     &:before {
+    //         transition-delay: 1s;
+    //     }
+    // }
 }
 
 .label-container {
