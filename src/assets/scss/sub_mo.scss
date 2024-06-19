@@ -102,6 +102,8 @@
 
     .breadcrumb__toggle ul {top: auto; bottom : 54px;}
     .sub-kv {
+        transition-duration: 1.5s !important;
+        background-color: #000;
         &__content {
             h2 {
                 span {
